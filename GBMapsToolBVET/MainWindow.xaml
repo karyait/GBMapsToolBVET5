@@ -1,0 +1,1083 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GBMapsToolBVET"
+        xmlns:InstanceBuilders="clr-namespace:Microsoft.VisualStudio.DesignTools.WpfDesigner.InstanceBuilders;assembly=Microsoft.VisualStudio.DesignTools.WpfDesigner" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="GBToolsMain" x:Class="MainWindow"
+        mc:Ignorable="d"
+        Title="GB Maps - ギビマップ Tools for BVE Trainsim" Height="580" Width="1024" Foreground="#FFA4A4A4" Background="#FF2C2C2C" Icon="GBToolIkon2.ico">
+    <Grid Background="#FF272727" Margin="5">
+        <TabControl x:Name="tabControl" Background="#FF878787" BorderBrush="#FF3E3E3E">
+            <TabItem  x:Name="Step_1" Header="Step 1 (Basic Setting)" Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold" >
+                <Grid Background="#FF2E2E2E">
+                    <Viewbox HorizontalAlignment="Left" Height="46" Margin="10,10,0,0" VerticalAlignment="Top" Width="422">
+                        <TextBlock x:Name="textBlockS1_Txt01" TextWrapping="Wrap" Text="Get Started!!" Foreground="#FFDADAFF"/>
+                    </Viewbox>
+                    <Label x:Name="labelS1_Txt02" Content="First, please set your default BVE Trainsim structures data folder. We will use this data to create relative location that will be used in structure.txt file." HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Label x:Name="labelS1_Txt03" Content="Your BVE Trainsim data folder, " HorizontalAlignment="Left" Margin="10,91.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Label x:Name="labelS1_Txt04" Content="default is &lt;gb maps folder&gt;\bve\bve5\conventional for conventional railway and &lt;gb maps folder&gt;\bve\bve5\hi-speed for shinkansen or high speed railway." HorizontalAlignment="Left" Margin="10,122.92,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <TextBox x:Name="textBoxBVEdataDir" Height="23" Margin="186.12,91.96,102.753,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonBrowseBVEDataDir" Content="Browse ..." HorizontalAlignment="Right" Margin="0,94.96,22.753,0" VerticalAlignment="Top" Width="75"/>
+                    <Label x:Name="labelS1_Txt05" Content="Next, please set your GB Maps image folder, i.e. &lt;gb maps folder&gt;\images." HorizontalAlignment="Left" Margin="10,181.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Label x:Name="labelS1_Txt06" Content="GB Maps image folder" HorizontalAlignment="Left" Margin="10,212.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <TextBox x:Name="textBoxGBimgDir" Height="23" Margin="186.12,215,102.753,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonGBImageDir" Content="Browse ..." HorizontalAlignment="Right" Margin="0,218.04,22.753,0" VerticalAlignment="Top" Width="75"/>
+                    <Label x:Name="labelS1_Txt07" Content="Note : If you want to reload previously saved data (.xml file) OR clear all field and create a new data, please go to step 17." HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Foreground="#FFA4A4A4"/>
+                    <Image x:Name="bvedatadir_jpg" Margin="10,250,0,0" Source="bvedatadir.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="490" VerticalAlignment="Top" Height="175" Opacity="0.5"/>
+                    <Image x:Name="imgdir_jpg" HorizontalAlignment="Left" Height="190" Margin="520,250,0,0" Source="imgdir.jpg" Stretch="Fill" VerticalAlignment="Top" Width="395" Opacity="0.5"/>
+                    <ComboBox x:Name="comboBoxLanguage" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="120">
+                        <ComboBoxItem Content="English" IsSelected="True"/>
+                        <ComboBoxItem Content="Bahasa Melayu"/>
+                    </ComboBox>
+                    <Label x:Name="labelLanguage" Content="Language:" HorizontalAlignment="Right" Margin="0,10,135,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Button x:Name="buttonGenControlXMLTxt" Content="SaveTxtList" HorizontalAlignment="Right" Margin="0,13,208.173,0" VerticalAlignment="Top" Width="75"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Step_2" Header="Step 2 (Rails)" ToolTip="Setup basic rail structures. Ballast type, slab type, etc." Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridRail" Margin="10,10,10,0" VerticalAlignment="Top" Height="202">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Image" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Type"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Gauge"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper1"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL1"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR1"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper2"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL2"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR3"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper3"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL3"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR3"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper4"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL4"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR4"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper5"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL5"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR5"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer Margin="10,217,0,10" HorizontalAlignment="Left" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS2_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRailName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS2_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <Label x:Name="labelS2_Txt03" Content="Gauge (mm)" HorizontalAlignment="Left" Margin="10,88.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <Label x:Name="labelS2_Txt04" Content="Structure type" HorizontalAlignment="Left" Margin="10,119.05,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRailTitle" Height="23" Margin="97,40.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="327"/>
+                            <ComboBox x:Name="comboBoxRailGauge" HorizontalAlignment="Left" Margin="97,92.09,0,0" VerticalAlignment="Top" Width="120">
+                                <ComboBoxItem Content="1,067 mm"/>
+                                <ComboBoxItem Content="1,435 mm"/>
+                                <ComboBoxItem Content="1,520 mm"/>
+                                <ComboBoxItem Content="1,524 mm"/>
+                                <ComboBoxItem Content="1,600 mm"/>
+                                <ComboBoxItem Content="1,668 mm"/>
+                                <ComboBoxItem Content="1,676 mm"/>
+                                <ComboBoxItem Content="1,000 mm"/>
+                            </ComboBox>
+                            <ComboBox x:Name="comboBoxRailType" HorizontalAlignment="Left" Margin="97,119.05,0,0" VerticalAlignment="Top" Width="120" ToolTip="Choose either slab or ballast type.">
+                                <ComboBoxItem Content="Ballast"/>
+                                <ComboBoxItem Content="Slab"/>
+                            </ComboBox>
+                            <GroupBox x:Name="groupBox" Header="Structure Files (.x only)" Margin="10,165.08,10,0" VerticalAlignment="Top" Height="779.46" Foreground="#FFA4A4A4">
+                                <Grid>
+                                    <Label x:Name="labelS2_Txt05" Content="Right Rail" HorizontalAlignment="Left" Margin="10,92.88,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt06" Content="Left Rail" HorizontalAlignment="Left" Margin="10,66.92,0,71.12" d:LayoutOverrides="Height" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt07" Content="Sleeper structure" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt08" Content="Texture0 (required)" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxRailSleeper1" Height="23" Margin="148,43.92,160,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <TextBox x:Name="textRailLeft1" Margin="148,69.88,160,71.12" TextWrapping="Wrap" Height="23" Width="451" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textRailRight1" Height="23" Margin="148,95.84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <Label x:Name="labelS2_Txt09" Content="Right Rail" HorizontalAlignment="Left" Margin="10,221.88,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt10" Content="Left Rail" HorizontalAlignment="Left" Margin="10,195.92,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt11" Content="Sleeper structure" HorizontalAlignment="Left" Margin="10,169.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt12" Content="Texture1 (optional)" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,139,0,0" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxRailSleeper2" Height="23" Margin="148,172.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <TextBox x:Name="textRailLeft2" Margin="148,198.88,0,0" TextWrapping="Wrap" Height="23" Width="451" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textRailRight2" Height="23" Margin="148,224.84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <Label x:Name="labelS2_Txt13" Content="Right Rail" HorizontalAlignment="Left" Margin="10,349.38,0,0" d:LayoutOverrides="Height" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt14" Content="Left Rail" HorizontalAlignment="Left" Margin="10,323.42,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt15" Content="Sleeper structure" HorizontalAlignment="Left" Margin="10,297.46,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt17" Content="Texture2 (optional)" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,266.5,0,0" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxRailSleeper3" Height="23" Margin="148,300.42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <TextBox x:Name="textRailLeft3" Margin="148,326.38,0,0" TextWrapping="Wrap" Height="23" Width="451" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textRailRight3" Margin="148,352.34,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="451" VerticalAlignment="Top" Height="23"/>
+                                    <Label x:Name="labelS2_Txt18" Content="Right Rail" HorizontalAlignment="Left" Margin="10,471.38,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt19" Content="Left Rail" HorizontalAlignment="Left" Margin="10,445.42,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt20" Content="Sleeper structure" HorizontalAlignment="Left" Margin="10,419.46,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt21" Content="Texture3 (optional)" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,388.5,0,0" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxRailSleeper4" Height="23" Margin="148,422.42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <TextBox x:Name="textRailLeft4" Margin="148,448.38,0,0" TextWrapping="Wrap" Height="23" Width="451" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textRailRight4" Height="23" Margin="148,474.34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <Label x:Name="labelS2_Txt22" Content="Right Rail" HorizontalAlignment="Left" Margin="10,600.38,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt23" Content="Left Rail" HorizontalAlignment="Left" Margin="10,574.42,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt24" Content="Sleeper structure" HorizontalAlignment="Left" Margin="10,548.46,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS2_Txt25" Content="Texture4 (optional)" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,517.5,0,0" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxRailSleeper5" Height="23" Margin="148,551.42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <TextBox x:Name="textRailLeft5" Margin="148,577.38,0,0" TextWrapping="Wrap" Height="23" Width="451" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textRailRight5" Height="23" Margin="148,603.34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="451"/>
+                                    <Label x:Name="labelS2_Txt26" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,697.626,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxRailCycle" HorizontalAlignment="Left" Height="23" Margin="148,697.626,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                                    <Label x:Name="labelS2_Txt27" Content="m" HorizontalAlignment="Left" Margin="273,697.626,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Button x:Name="buttonBrowseRailRight5" Content="Browse ..." HorizontalAlignment="Left" Margin="604,606.38,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseRailLeft5" Content="Browse ..." HorizontalAlignment="Left" Margin="604,577.42,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseRailSleeper5" Content="Browse ..." HorizontalAlignment="Left" Margin="604,551.46,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseRailRight4" Content="Browse ..." HorizontalAlignment="Left" Margin="604,473.38,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseRailLeft4" Content="Browse ..." HorizontalAlignment="Left" Margin="604,448.42,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseRailSleeper4" Content="Browse ..." HorizontalAlignment="Left" Margin="604,423.46,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseRailRight3" Content="Browse ..." HorizontalAlignment="Left" Margin="604,352.38,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailLeft3" Content="Browse ..." HorizontalAlignment="Left" Margin="604,327.42,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailSleeper3" Content="Browse ..." HorizontalAlignment="Left" Margin="604,302.46,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailRight2" Content="Browse ..." HorizontalAlignment="Left" Margin="604,224.88,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailSleeper2" Content="Browse ..." HorizontalAlignment="Left" Margin="604,172.96,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailLeft2" Content="Browse ..." HorizontalAlignment="Left" Margin="604,199.92,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailRight1" Content="Browse ..." HorizontalAlignment="Left" Margin="604,98.88,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailLeft1" Content="Browse ..." HorizontalAlignment="Left" Margin="604,69.92,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseRailSleeper1" Content="Browse ..." HorizontalAlignment="Left" Margin="604,43.96,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                    <TextBlock x:Name="textBlockS2_Txt28" HorizontalAlignment="Left" Margin="10,0,0,83.5" TextWrapping="Wrap" Text="Note : Place five structures with different texture in a cycle to create a more natural pattern (optional). Specific rail for curve not required in BVE Trainsim, short rail object (5 meter or shorter) is enough for creating normal curve, transition curve and also vertical curve." VerticalAlignment="Bottom"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS2_Txt29" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="10,968.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRailImage" Height="23" Margin="187.127,968.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421"/>
+                            <Button x:Name="buttonBrowseRailImage" Content="Browse ..." HorizontalAlignment="Left" Margin="613.127,971.08,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonNewRail" Content="Add +" HorizontalAlignment="Left" Margin="687.5,1014.08,0,0" VerticalAlignment="Top" Width="75"/>
+                            <TextBlock x:Name="textBlockS2_Txt30" Margin="10,1066.5,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="548" Height="489.62" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="BVETrainsim usage example:"/><LineBreak/><Run/><LineBreak/><Run Text="BVE syntax in map.txt file:"/><LineBreak/><Run Text="Repeater['Ballast'].Begin('', 0, 0, 0, 0, 0, 0, 3, 5, 5, 'Ballast0'); "/><LineBreak/><Run/><LineBreak/><Run Text="OR"/><LineBreak/><Run/><LineBreak/><Run Text="Repeater['Ballast'].Begin(, 0, 0, 0, 0, 0, 0, 3, 5, 5, 'Ballast0', 'Ballast1', 'Ballast2', 'Ballast3', 'Ballast4');"/><LineBreak/><Run Text="Repeater['RailL'].Begin(, -0.5335, 0, 0, 0, 0, 0, 3, 5, 5, 'RailL0', 'RailL1', 'RailL2', 'RailL3', 'RailL4');"/><LineBreak/><Run Text="Repeater['RailR'].Begin(, 0.5335, 0, 0, 0, 0, 0, 3, 5, 5, 'RailR0', 'RailR1', 'RailR2', 'RailR3', 'RailR4');"/><LineBreak/><Run/><LineBreak/><Run Text="delaration in structure.txt:"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 1.00"/><LineBreak/><Run Text="RailL0,strpack1\RailL0.x"/><LineBreak/><Run Text="RailL1,strpack1\RailL1.x"/><LineBreak/><Run Text="RailL2,strpack1\RailL2.x"/><LineBreak/><Run Text="RailL3,strpack1\RailL3.x"/><LineBreak/><Run Text="RailL4,strpack1\RailL4.x"/><LineBreak/><Run Text="RailR0,strpack1\RailR0.x"/><LineBreak/><Run Text="RailR1,strpack1\RailR1.x"/><LineBreak/><Run Text="RailR2,strpack1\RailR2.x"/><LineBreak/><Run Text="RailR3,strpack1\RailR3.x"/><LineBreak/><Run Text="RailR4,strpack1\RailR4.x"/><LineBreak/><Run Text="Ballast0,strpack1\Ballast0.x"/><LineBreak/><Run Text="Ballast1,strpack1\Ballast1.x"/><LineBreak/><Run Text="Ballast2,strpack1\Ballast2.x"/><LineBreak/><Run Text="Ballast3,strpack1\Ballast3.x"/><LineBreak/><Run Text="Ballast4,strpack1\Ballast4.x"/></TextBlock>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="572,999.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="43,1005.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515">
+                                <TextBlock x:Name="textBlockS2_Txt31" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                            <Label x:Name="labelS2_Txt32" Content="(optional)" HorizontalAlignment="Left" Margin="222,88.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                        </Grid>
+                    </ScrollViewer>
+                    <Image x:Name="image" HorizontalAlignment="Left" Height="139" Margin="829,322.08,0,0" VerticalAlignment="Top" Width="154"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 3 (Poles)" ToolTip="Setup poles and overhead wire structures." Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridPoles" Margin="10,10,10,0" VerticalAlignment="Top" Height="202">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Pole"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Overhead" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Image"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer Margin="10,217,0,10" HorizontalAlignment="Left" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS3_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxPoleName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS3_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxPoleTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBox1" Header="BVE structure (.x files)" Margin="10,87.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="139" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" Foreground="#FFA4A4A4">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS3_Txt03" Content="Pole structure" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS3_Txt04" Content="Overhead wire structure" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS3_Txt05" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,71.92,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS3_Txt06" Content="m" HorizontalAlignment="Left" Margin="242.06,71.92,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxPoleStructure" Height="23" Margin="196.56,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387"/>
+                                    <TextBox x:Name="textBoxOverHeadWire" Height="23" Margin="196.56,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387"/>
+                                    <TextBox x:Name="textBoxPoleCycle" Margin="196.56,74.88,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40.5" d:LayoutOverrides="HorizontalAlignment" ToolTip="default, every 25 m" Height="23" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowsePoleStructure" Content="Browse ..." HorizontalAlignment="Right" Margin="0,13,83.08,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="buttonBrowseOverHeadWire" Content="Browse ..." HorizontalAlignment="Right" Margin="0,43.96,83.08,0" VerticalAlignment="Top" Width="75"/>
+                                </Grid>
+                            </GroupBox>
+                            <Button x:Name="buttonAddNewPole" Content="Add +" HorizontalAlignment="Left" Margin="693.64,291.08,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Image x:Name="image1" HorizontalAlignment="Left" Margin="10,333.707,0,0" VerticalAlignment="Top" Source="pole.jpg" Stretch="None"/>
+                            <TextBlock x:Name="textBlockS3_Txt07" Margin="214,333.707,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="Pole_3,poles\SuperExpress_Double_1a\pole21a-2.x"/><LineBreak/><Run Text="Pole1L,poles\SuperExpress_Single_1c\pole1cL.x"/><LineBreak/><Run Text="Pole1R,poles\SuperExpress_Single_1c\pole1cR.x"/><LineBreak/><Run Text="ohwire_0,rail\ohsk.x"/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="0;"/><LineBreak/><Run Text="&#x9;.... "/><LineBreak/><Run Text="&#x9;Repeater['ohwire_0'].Begin(0, 0, 0, 0, 0, 0, 0, 0, 25, 25,'ohwire_0');"/><LineBreak/><Run Text="&#x9;Repeater['ohwire_1'].Begin('1', 0, 0, 0, 0, 0, 0, 0, 25, 25,'ohwire_0');"/><LineBreak/><Run Text="&#x9;Repeater['PoleL'].Begin0('0', 1, 25, 25,'Pole1L');"/><LineBreak/><Run Text="&#x9;Repeater['PoleR'].Begin0('1', 1, 25, 25,'Pole1R');"/><LineBreak/><Run Text="&#x9;....."/></TextBlock>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="584.14,275.707,0,0" Orientation="Right" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="1"/>
+                                        <GradientStop Color="White"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Stroke>
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="50.5,282.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS3_Txt08" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                            <Label x:Name="labelS3_Txt09" Content="Image File (for GB Maps only)" Margin="10,241.787,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxPoleImage" Height="23" Margin="214,244.747,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387"/>
+                            <Button x:Name="buttonBrowsePoleImage" Content="Browse ..." HorizontalAlignment="Right" Margin="0,244.787,106.86,0" VerticalAlignment="Top" Width="75"/>
+
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 4 (Running Trainset)" ToolTip="Create running trainset list." Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridRunningTrain" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Folder" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS4_Txt01" Content="Your BVE Trainsim trains folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRunTrainsfolder" Height="23" Margin="10,40.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="666"/>
+                            <Button x:Name="buttonBrowseTrainFolder" Content="Browse ..." HorizontalAlignment="Right" Margin="0,44,35,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonRetriveTrainFolder" Content="Retrive" HorizontalAlignment="Right" Margin="0,100.08,35,0" VerticalAlignment="Top" Width="75"/>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 5 (Sound files)" ToolTip="Include sound files" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridSoundFiles" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Type"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Audio" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Button x:Name="buttonBrowseSound" Content="Browse ..." HorizontalAlignment="Left" Margin="661.837,138.05,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Label x:Name="labelS5_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxSoundName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS5_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxSoundTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <Label x:Name="labelS5_Txt03" Content="Type" HorizontalAlignment="Left" Margin="10,104.09,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                            <Label x:Name="labelS5_Txt04" Content="Sound file (.wav)" HorizontalAlignment="Left" Margin="10,135.05,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <ComboBox x:Name="comboBoxSoundType" HorizontalAlignment="Left" Margin="111.837,108.09,0,0" Width="120" VerticalAlignment="Top">
+                                <ComboBoxItem Content="Announce"/>
+                                <ComboBoxItem Content="Melody"/>
+                                <ComboBoxItem Content="Dopler"/>
+                                <ComboBoxItem Content="Flange"/>
+                            </ComboBox>
+                            <TextBox x:Name="textBoxSoundFile" Height="23" Margin="111.837,135.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="545"/>
+                            <Button x:Name="buttonAddNewSound" Content="Add +" HorizontalAlignment="Left" Margin="690.5,238.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,223.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="46,230.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS5_Txt05" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 6 (Tunnel)" ToolTip="Tunnel structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridTunnel" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Entrance" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Exit" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS6_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxTunnelName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS6_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxTunnelTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS6_Txt03" Header="BVE structure (.x files)" Margin="10,89.33,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="537.75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS6_Txt04" Content="Entrance structure (.x file)" HorizontalAlignment="Left" Margin="9.999,199.02,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS6_Txt05" Content="Exit structure (.x file)" HorizontalAlignment="Left" Margin="10,433.61,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Label x:Name="labelS6_Txt06" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,365.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS6_Txt07" Content="m" HorizontalAlignment="Left" Margin="288,365.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxTunnelEntranceFile" Height="23" Margin="230.673,201.98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="418.837"/>
+                                    <Button x:Name="buttonBrowseTunnelEntranceFile" Content="Browse ..." HorizontalAlignment="Left" Margin="654.51,202.02,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownWall1Cycle" Margin="221.223,371.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS6_Txt08" Content="Tunnel Entrance" HorizontalAlignment="Left" Margin="56.06,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Image x:Name="image4" Margin="611.06,42,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="TunExtD.jpg" Stretch="None"/>
+                                    <Image x:Name="image6" Margin="246.56,42,0,0" VerticalAlignment="Top" Source="TunWallL.jpg" HorizontalAlignment="Left" Stretch="None"/>
+                                    <Label x:Name="labelS6_Txt09" Content="Tunnel Exit" Margin="631.51,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" RenderTransformOrigin="-0.649,0.491" HorizontalAlignment="Left"/>
+                                    <Label x:Name="labelS6_Txt10" Content="Tunnel Wall (.x file)" HorizontalAlignment="Left" Margin="10,260.55,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxTunnelWallLeft" Height="23" Margin="10,312.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseTunnelWallLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="288,340.55,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <TextBox x:Name="textBoxTunnelWallRight" Height="23" Margin="383.64,312.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseTunnelWallRight" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,340.55,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <TextBox x:Name="textBoxTunnelExitStructure" Margin="230.673,439.57,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="418.837" Height="23" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseTunnelExitStructure" Content="Browse ..." HorizontalAlignment="Left" Margin="654.51,439.61,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Label x:Name="labelS6_Txt11" Content="(Left structure)" HorizontalAlignment="Left" Margin="128.973,286.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS6_Txt12" Content="(Right structure)" HorizontalAlignment="Right" Margin="0,286.59,147.75,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Image x:Name="image6_Copy" Source="TunWallR.jpg" HorizontalAlignment="Left" Margin="415.14,42,0,0" VerticalAlignment="Top" Stretch="None"/>
+                                    <Image x:Name="image6_Copy1" Margin="25.06,42,0,0" VerticalAlignment="Top" Source="TunEntD.jpg" HorizontalAlignment="Left" Stretch="None"/>
+                                    <Label x:Name="labelS6_Txt13" Content="Tunnel Wall Left" HorizontalAlignment="Left" Margin="252.736,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS6_Txt14" Content="Tunnel Wall Right" HorizontalAlignment="Right" Margin="0,10,207.556,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS6_Txt15" Content="Image File (for GB Maps only)" Margin="10,661.82,0,0" HorizontalAlignment="Left" Foreground="#FFA4A4A4" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxTunnelImage" Margin="181.24,664.78,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="418.837" Height="23" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseTunnelImage" Content="Browse ..." HorizontalAlignment="Left" Margin="605.077,664.82,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewTunnel" Content="Add +" HorizontalAlignment="Left" Margin="686,738.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="570.5,723.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="41.5,730.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS6_Txt16" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                            <TextBlock x:Name="textBlockS6_Txt17" HorizontalAlignment="Left" Margin="10,804.37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="TunS_tun1LR,tunnel\tunnel0\tunstart1.x"/><LineBreak/><Run Text="TunL1_0,tunnel\tunnel0\tunnel1ls.x"/><LineBreak/><Run Text="TunR1_0,tunnel\tunnel0\tunnel1rs.x"/><LineBreak/><Run Text="TunL2_0,tunnel\tunnel0\tunnel1l.x"/><LineBreak/><Run Text="TunR2_0,tunnel\tunnel0\tunnel1r.x"/><LineBreak/><Run Text="TunL4_0,tunnel\tunnel0\tunnel1le.x"/><LineBreak/><Run Text="TunR4_0,tunnel\tunnel0\tunnel1re.x"/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="16225;"/><LineBreak/><Run Text="&#x9;...."/><LineBreak/><Run Text="&#x9;Structure['TunS_tun1LR'].Put('0', 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;...."/><LineBreak/><Run Text="&#x9;# tunnel"/><LineBreak/><Run Text="&#x9;Repeater['TunL2_0'].Begin('0', 0.5, 0, 0, 0, 0, 0, 1, 25, 25,'TunL2_0');"/><LineBreak/><Run Text="&#x9;Repeater['TunR2_0'].Begin('1', -0.5, 0, 0, 0, 0, 0, 1, 25, 25,'TunR2_0');&#x9;"/><LineBreak/><Run/><LineBreak/><Run Text="21200;"/><LineBreak/><Run Text="&#x9;...."/><LineBreak/><Run Text="&#x9;Repeater['TunL2_0'].End();"/><LineBreak/><Run Text="&#x9;Repeater['TunR2_0'].End();"/></TextBlock>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Setup 7 (Bridges)" ToolTip="Bridge structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridBridge" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallCycle" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Pier" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="PierCycle" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="xStart" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS7_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxBridgeName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS7_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxBridgeTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS7_Txt03" Header="BVE structure (.x files)" Margin="10,90.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="493.58" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS7_Txt04" Content="Pier structure (. x files) - optional" HorizontalAlignment="Left" Margin="10,161.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS7_Txt05" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS7_Txt06" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxBridgePier" Height="23" Margin="206.27,164.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="424.29"/>
+                                    <Button x:Name="buttonBrowseBridgePier" Content="Browse ..." HorizontalAlignment="Left" Margin="635.56,167.08,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <TextBox x:Name="textBoxBridgeLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseBridgeLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS7_Txt07" Content="Bridge structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxBridgeRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseBridgeRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS7_Txt08" Content="(Left structure)" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS7_Txt09" Content="(Right structure)" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownBridgeCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Label x:Name="labelS7_Txt10" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS7_Txt11" Content="m" HorizontalAlignment="Left" Margin="210.517,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownBridgePierCycle" HorizontalAlignment="Left" Margin="139.3,204,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Label x:Name="labelS7_Txt12" Content="m" HorizontalAlignment="Left" Margin="210.517,257.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownBridgeXCorrection" HorizontalAlignment="Left" Margin="139.3,263,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Label x:Name="labelS7_Txt13" Content="Placement correction" HorizontalAlignment="Left" Margin="10,257.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS7_Txt14" Content="(+/- value)" HorizontalAlignment="Left" Margin="249,257.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Image x:Name="image9" Margin="286,316.54,0,0" VerticalAlignment="Top" Source="br2.jpg" Height="133" Width="200" HorizontalAlignment="Left" d:LayoutOverrides="Width" ToolTip="Deck type, left and right structure required"/>
+                                    <Image x:Name="image10" Margin="561.56,263,0,0" VerticalAlignment="Top" Source="br3.jpg" HorizontalAlignment="Left" Height="186.54" Width="149" ToolTip="complete structure of single track bridge, right structured not required"/>
+                                    <Image x:Name="image8" HorizontalAlignment="Left" Margin="26.854,316.54,0,0" VerticalAlignment="Top" Source="br4.jpg" Stretch="Fill" Width="204" Height="133" ToolTip="bridge with pier, complete structure. therefore, right structure not required"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS7_Txt15" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,603.58,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxBridgeImage" Height="23" Margin="190.127,603.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseBridgeImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,606.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewBridge" Content="Add +" HorizontalAlignment="Left" Margin="690.5,649.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,634.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="46,641.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS7_Txt16" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 8 (Overpass)" ToolTip="Overpass/Flyover structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridOverpass" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallCycle" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Pier" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="PierCycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS8_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxOverPassName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS8_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxOverPassTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS8_Txt03" Header="BVE structure (.x files)" Margin="10,90.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="493.58" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS8_Txt04" Content="Pier structure (. x files) - optional" HorizontalAlignment="Left" Margin="10,161.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS8_Txt05" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS8_Txt06" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxOverPassPier" Height="23" Margin="206.27,164.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="424.29"/>
+                                    <Button x:Name="buttonBrowseOverPassPier" Content="Browse ..." HorizontalAlignment="Left" Margin="635.56,167.08,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <TextBox x:Name="textBoxOverPassWallLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseOverPassWallLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS8_Txt07" Content="Overpass @ Flyover structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxOverPassWallRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseOverPassWallRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS8_Txt08" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS8_Txt09" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownOverPassWallCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Label x:Name="labelS8_Txt10" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS8_Txt11" Content="m" HorizontalAlignment="Left" Margin="210.517,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownOverPassPierCycle" HorizontalAlignment="Left" Margin="139.3,204,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Image x:Name="image11" HorizontalAlignment="Left" Margin="536.3,-443.96,-289.66,0" VerticalAlignment="Top" Source="fo.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Image x:Name="image12" Margin="122.973,248.04,0,0" VerticalAlignment="Top" Stretch="None" Source="fo.jpg" HorizontalAlignment="Left" Width="500" Height="198"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS8_Txt13" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,603.58,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxOverPassImage" Height="23" Margin="190.127,603.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseOverPassImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,606.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewOverpass" Content="Add +" HorizontalAlignment="Left" Margin="690.5,649.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,634.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="46,641.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS8_Txt14" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 9 (Hill Cuts)" ToolTip="Hill cut structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridHillCut" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,212,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS9_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxHillCutName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS9_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxHillCutTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS9_Txt03" Header="BVE structure (.x files)" Margin="10,90.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="493.58" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS9_Txt04" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS9_Txt05" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxHillCutLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseHillCutLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS9_Txt06" Content="Hill cut structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxHillCutRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseHillCutRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS9_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS9_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Image x:Name="image13" HorizontalAlignment="Left" Margin="536.3,-443.96,-289.66,0" VerticalAlignment="Top" Source="fo.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Image x:Name="image14" Margin="123.973,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="hilcut.jpg" HorizontalAlignment="Left" Width="500" Height="307"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS9_Txt09" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,605.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxHillCutImage" Height="23" Margin="190.127,605.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseHillCutImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,608.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewHillCut" Content="Add +" HorizontalAlignment="Left" Margin="690.5,651.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,636.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="46,642.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS9_Txt10" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 10 (Dikes)" ToolTip="Dike structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridDike" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS10_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxDikeName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelPoleS10_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxDikeTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS10_Txt03" Header="BVE structure (.x files)" Margin="10,92.08,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="335.58" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS10_Txt04" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS10_Txt05" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxDikeLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseDikeLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS10_Txt06" Content="Dike structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxDikeRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseDikeRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS10_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS10_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="IntegerUpDownDikeCylce" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Image x:Name="image16" Margin="123.973,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="dike.jpg" HorizontalAlignment="Left" Width="500" Height="143"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS10_Txt09" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,443.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxDikeImage" Height="23" Margin="190.127,443.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseDikeImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,446.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewDike" Content="Add +" HorizontalAlignment="Left" Margin="690.5,489.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,474.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="46,480.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS10_Txt10" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 11 (Road Crossing)" ToolTip="Road Crossing structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridRC" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="GateLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="GateRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Slab" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sound" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Button x:Name="buttonAddNewRC" Content="Add +" HorizontalAlignment="Left" Margin="693.64,687.08,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Label x:Name="labelS11_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRCName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS11_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRCTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS11_Txt03" Header="BVE structure (.x files)" Margin="10,93.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="498" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS11_Txt04" Content="Left gate structure (.x files)" HorizontalAlignment="Left" Margin="10,304.5,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS11_Txt05" Content="Road intersection (.x file)" HorizontalAlignment="Left" Margin="10,335.46,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxRCgateLeft" Margin="196.56,307.46,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="387" Height="23" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxRCIntersection" Margin="196.56,338.42,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="387" Height="23" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowseRCgateLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,307.5,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowseRCIntersection" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,338.46,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS11_Txt06" Content="Right gate structure (.x file)" HorizontalAlignment="Left" Margin="10,369,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS11_Txt07" Content="Sound effect (.wav)" HorizontalAlignment="Left" Margin="10,399.96,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxRCgateRight" Margin="196.56,371.96,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="387" Height="23" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxRCSound" Margin="196.56,402.92,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="387" Height="23" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowseRCgateRight" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,372,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowseRCSound" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,402.96,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Image x:Name="image15" HorizontalAlignment="Left" Margin="123,22,0,0" VerticalAlignment="Top" Source="rc.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
+                                    <ed:Callout AnchorPoint="0,1.5" CalloutStyle="Rectangle" Content="Road Intersection (slab, rail guard, road etc)" Foreground="{DynamicResource BaseForeground-Sketch}" Fill="#FFF4F4F5" FontSize="{DynamicResource SizeDouble-Sketch}" FontFamily="{DynamicResource FontFamily-Sketch}" ed:GeometryEffect.GeometryEffect="Sketch" Height="47" Margin="373,137.04,244.14,0" Stroke="Black" VerticalAlignment="Top"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS11_Txt08" Content="Image File (for GB Maps only)" Margin="10,620.62,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxRCImage" Height="23" Margin="181.24,623.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387"/>
+                            <Button x:Name="buttonBrowseRCImage" Content="Browse ..." Margin="573.24,626.62,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+                            <TextBlock x:Name="textBlockS11_Txt09" HorizontalAlignment="Left" Margin="10,757.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="...."/><LineBreak/><Run Text="Rc0_0,1067\crossing\tollbardl.x"/><LineBreak/><Run Text="Rc1_0,1067\crossing\crossingd.x"/><LineBreak/><Run Text="Rc2_0,1067\crossing\tollbardr.x"/><LineBreak/><Run Text="Rc0_1,1067\crossing\tollbarsl.x"/><LineBreak/><Run Text="Rc1_1,1067\crossing\crossings.x"/><LineBreak/><Run Text="Rc2_1,1067\crossing\tollbarsr.x"/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="143;"/><LineBreak/><Run Text="&#x9;Structure['Rc0_0'].Put(0, 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Structure['Rc1_0'].Put(0, 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Structure['Rc1_0'].Put(1, 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Structure['Rc2_0'].Put(1, 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Sound3D['Rc4_0'].Put(-3.2, 2.7);"/><LineBreak/></TextBlock>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="582,672,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="53,679,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515">
+                                <TextBlock x:Name="textBlockS15_Txt1" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 12 (Platfoms)" ToolTip="Platfom structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridPlatform" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="FormLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="FormMiddleLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="FormMiddleRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="FormRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="FormCycle" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RoofLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RoofMiddleLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RoofMiddleRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RoofRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RoofCycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,212,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS12_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxPlatformName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS12_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxPlatformTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS12_Txt03" Header="BVE structure (.x files)" Margin="10,89.33,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="736.75" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS12_Txt04" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,380.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS12_Txt05" Content="m" HorizontalAlignment="Left" Margin="288,380.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxPlatformLeft" Height="23" Margin="10,227.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowsePlatformLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="159,255.55,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowsePlatformMiddleLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="410,255.55,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <xctk:IntegerUpDown x:Name="iudPlatformCycle" Margin="221.223,386.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonbrowsePlatformRight" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,255.55,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Label x:Name="labelS12_Txt06" Content="(Left structure) - required" HorizontalAlignment="Left" Margin="49.433,196.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS12_Txt07" Content="(Right structure) - required" HorizontalAlignment="Right" Margin="0,196.59,43.75,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Image x:Name="image17" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Source="form.jpg" Stretch="None"/>
+                                    <TextBox x:Name="textBoxPlatformMiddleLeft" Height="23" Margin="261,227.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                                    <TextBox x:Name="textBoxPlatformRight" Height="23" Margin="512.64,227.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                                    <Label x:Name="labelS12_Txt08" Content="(Middle structure@Left) - required" Margin="277.646,196.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" HorizontalAlignment="Left"/>
+                                    <ed:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="34" Margin="0,69.79,219.257,0" Orientation="Down" Stroke="Black" VerticalAlignment="Top" Width="24"/>
+                                    <ed:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="34" Margin="171.783,69.79,0,0" Orientation="Down" Stroke="Black" VerticalAlignment="Top" Width="24"/>
+                                    <ed:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="34" Margin="233,69.79,0,0" Orientation="Down" Stroke="Black" VerticalAlignment="Top" Width="24"/>
+                                    <Button x:Name="buttonBrowsePlatformMiddleRight" Content="Browse ..." HorizontalAlignment="Left" Margin="410,347.55,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <TextBox x:Name="textBoxPlatformMiddleRight" Height="23" Margin="261,319.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                                    <Label x:Name="labelS12_Txt09" Content="(Middle structure@right) - required" Margin="274.646,288.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" HorizontalAlignment="Left"/>
+                                    <Viewbox HorizontalAlignment="Left" Height="36.8" Margin="10,154.79,0,0" VerticalAlignment="Top" Width="124.3">
+                                        <TextBlock x:Name="textBlockS12_Txt10" TextWrapping="Wrap" Text="Platform"/>
+                                    </Viewbox>
+                                    <Viewbox HorizontalAlignment="Left" Height="36.8" Margin="10,445.29,0,0" VerticalAlignment="Top" Width="124.3">
+                                        <TextBlock x:Name="textBlockS12_Txt11" TextWrapping="Wrap" Text="Roof"/>
+                                    </Viewbox>
+                                    <Label x:Name="labelS12_Txt12" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,671.01,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS12_Txt13" Content="m" HorizontalAlignment="Left" Margin="288,671.01,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxPlatformRoofLeft" Height="23" Margin="10,519.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowsePlatformRoofLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="159,547.05,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowsePlatformRoofMiddleLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="410,547.05,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <xctk:IntegerUpDown x:Name="iudPlatformRoofCycle" Margin="221.223,676.97,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowsermRoofRight" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,547.05,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS12_Txt14" Content="(Left structure) - required" HorizontalAlignment="Left" Margin="49.433,488.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS12_Txt15" Content="(Right structure) - required" HorizontalAlignment="Right" Margin="0,488.09,43.749,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxPlatformRoofMiddleLeft" Height="23" Margin="261,519.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                                    <TextBox x:Name="textBoxPlatformRoofRight" Height="23" Margin="512.64,519.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                                    <Label x:Name="labelS12_Txt16" Content="(Middle structure@Left) - required" Margin="277.646,488.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" HorizontalAlignment="Left"/>
+                                    <Button x:Name="buttonBrowsePlatformRoofMiddleRight" Content="Browse ..." HorizontalAlignment="Left" Margin="410,639.05,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <TextBox x:Name="textBoxPlatformRoofMiddleRight" Height="23" Margin="261,611.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+                                    <Label x:Name="labelS12_Txt17" Content="(Middle structure@right) - required" Margin="274.646,580.09,0,0" Foreground="#FFA4A4A4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS12_Txt18" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="10,848.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxPlatformImage" Height="23" Margin="187.127,848.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421"/>
+                            <Button x:Name="buttonBrowsePlatformImage" Content="Browse ..." HorizontalAlignment="Left" Margin="613.127,851.08,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonAddNewPlatform" Content="Add +" HorizontalAlignment="Left" Margin="687.5,894.08,0,0" VerticalAlignment="Top" Width="75"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="572,879.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="43,885.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515">
+                                <TextBlock x:Name="textBlockS12_Txt19" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                            <TextBlock x:Name="textBlockS12_Txt20" HorizontalAlignment="Left" Margin="10,959.13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="FormCL0,Stations\PfCL.x"/><LineBreak/><Run Text="FormCL1,Stations\PfCL1.x"/><LineBreak/><Run Text="FormCR0,Stations\PfCR.x"/><LineBreak/><Run Text="FormCR1,Stations\PfCR1.x"/><LineBreak/><Run Text="FormL0,Stations\PfL.x"/><LineBreak/><Run Text="FormR0,Stations\PfR.x"/><LineBreak/><Run Text="RoofCL1,Stations\RoofCL.x"/><LineBreak/><Run Text="RoofCR1,Stations\RoofCR.x"/><LineBreak/><Run Text="RoofL1,Stations\RoofL.x"/><LineBreak/><Run Text="RoofR1,Stations\RoofR.x"/><LineBreak/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="2;"/><LineBreak/><Run Text="&#x9;Structure['FormL0'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['FormCL0'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofL1'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofCL1'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['FormR0'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['FormCR0'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofR1'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofCR1'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="23;"/><LineBreak/><Run Text="&#x9;Station['Midoridai'].Put(-1, -2, 2);"/><LineBreak/><Run Text="&#x9;Train['Oncoming'].Stop(3, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Structure['StopS'].Put('', 1.7, 0, 0, 0, 15, 0, 1, 25);"/></TextBlock>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 13 (Cracks)" ToolTip="Crack structure list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridCrack" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Left" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Right" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS13_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxCrackName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS13_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxCrackTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS13_Txt03" Header="BVE structure (.x files)" Margin="10,92.08,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="659.5" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS13_Txt04" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS13_Txt05" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxCrackLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseCrackLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS13_Txt06" Content="Crack structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxCrackRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseCrackRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS13_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS13_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="iudCrackCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Image x:Name="image18" Margin="72.973,158.62,0,0" VerticalAlignment="Top" Stretch="None" Source="crack.jpg" HorizontalAlignment="Left"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS13_Txt09" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="10,777.58,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxCrackImage" Height="23" Margin="187.127,777.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421"/>
+                            <Button x:Name="buttonBrowseCrackImage" Content="Browse ..." HorizontalAlignment="Left" Margin="613.127,780.58,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonAddNewCrack" Content="Add +" HorizontalAlignment="Left" Margin="687.5,823.58,0,0" VerticalAlignment="Top" Width="75"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="572,808.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="43,815.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515">
+                                <TextBlock x:Name="textBlockS13_Txt10" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                            <TextBlock x:Name="textBlockS13_Txt11" HorizontalAlignment="Left" Margin="10,894.6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="...."/><LineBreak/><Run Text="CraSR,crack\slab\CraSlbR.x"/><LineBreak/><Run Text="CraSL,crack\slab\CraSlbL.x"/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="27900;&#x9;"/><LineBreak/><Run Text="&#x9;....."/><LineBreak/><Run Text="&#x9;Structure['CraSR'].PutBetween('0','4');"/><LineBreak/><Run Text="&#x9;Structure['CraSR'].PutBetween('5','1');"/></TextBlock>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 14 (Undergrounds)" ToolTip="Underground structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridUG" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="GroundLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="GroundRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="GroundCycle" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="CWallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="CWallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="CWallCycle" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Entrance" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Exit" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="UWallLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="UWallRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="UWallCycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS14_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxUGName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS14_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxUGTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS14_Txt03" Header="Entrance/Exit structure (.x files)" Margin="10,92.08,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="631.08" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS14_Txt04" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt05" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxUGGroundLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseUGGroundLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt06" Content="Ground structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxUGGroundRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseUGGroundRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS14_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="iudUGGroundCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Image x:Name="image19" Margin="23.473,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="ug1.jpg" HorizontalAlignment="Left"/>
+                                    <Label x:Name="labelS14_Txt09" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,409.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt10" Content="m" HorizontalAlignment="Left" Margin="210.517,409.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxUGWallLeft" Height="23" Margin="8,361.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseUGWallLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,389.05,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Label x:Name="labelS14_Txt11" Content="Wall structure (.x file) - required" HorizontalAlignment="Left" Margin="8,312.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxUGWallRight" Height="23" Margin="381.64,361.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseUGWallRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,389.05,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt12" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,335.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS14_Txt13" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,335.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="iudUGoWallCycle" HorizontalAlignment="Left" Margin="139.3,415,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <Image x:Name="image19_Copy" Margin="273.973,455.12,272.667,0" VerticalAlignment="Top" Stretch="None" Source="ug2.jpg" d:LayoutOverrides="Width"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox x:Name="groupBoxS14_Txt14" Header="Underground structure (.x files)" Margin="10,740.33,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="437.75" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS14_Txt15" Content="Enterance structure (.x file)" HorizontalAlignment="Left" Margin="10,160.02,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS14_Txt16" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,317.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt17" Content="m" HorizontalAlignment="Left" Margin="288,317.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxUGEntrance" Height="23" Margin="221.223,162.98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="418.837"/>
+                                    <Button x:Name="buttonBrowseUGEntrance" Content="Browse ..." HorizontalAlignment="Left" Margin="645.06,163.02,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <xctk:IntegerUpDown x:Name="iudUGiWallcycle" Margin="221.223,323.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt18" Content="Underground Entrance" HorizontalAlignment="Left" Margin="100.283,11.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Image x:Name="image20" HorizontalAlignment="Left" Height="100" Margin="116.223,42,0,0" VerticalAlignment="Top" Width="100" Source="ugtnent.jpg"/>
+                                    <Image x:Name="image23" Height="100" Margin="311.56,42,315.08,0" VerticalAlignment="Top" Source="ugtnwall.jpg" Width="120"/>
+                                    <Image x:Name="image24" HorizontalAlignment="Right" Height="100" Margin="0,42,113,0" VerticalAlignment="Top" Width="120" Source="ugtnext.jpg"/>
+                                    <TextBlock x:Name="textBlockS14_Txt19" HorizontalAlignment="Left" Margin="525.06,21.04,0,0" TextWrapping="Wrap" Text="Underground Exit" VerticalAlignment="Top" Width="115"/>
+                                    <TextBlock x:Name="textBlockS14_Txt20" HorizontalAlignment="Left" Margin="322.56,21.04,0,0" TextWrapping="Wrap" Text="Underground Wall" VerticalAlignment="Top" Width="101" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS14_Txt21" Content="Underground wall texture (.x file)" HorizontalAlignment="Left" Margin="10,216.55,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Label x:Name="labelS14_Txt22" Content="Underground Exit structure (.x file)" HorizontalAlignment="Left" Margin="10,372.97,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxUGWallLeft1" Height="23" Margin="10,264.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseUGWallLeft1" Content="Browse ..." HorizontalAlignment="Left" Margin="288,292.55,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <TextBox x:Name="textBoxUGWallRight1" Height="23" Margin="383.64,264.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Button x:Name="buttonBrowseUGWallRight1" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,292.55,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <TextBox x:Name="textBoxUGExit" Margin="221.223,375.93,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="418.837" Height="23" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowseUGExit" Content="Browse ..." HorizontalAlignment="Left" Margin="645.06,375.93,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS14_Txt23" Content="(Left structure)" HorizontalAlignment="Left" Margin="128.973,238.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                                    <Label x:Name="labelS14_Txt24" Content="(Right structure)" HorizontalAlignment="Right" Margin="0,238.59,147.75,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                                </Grid>
+                            </GroupBox>
+                            <TextBlock x:Name="textBlockS14_Txt25" HorizontalAlignment="Left" Margin="10,1278.141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="grnL,shared\underground\0001-green-grassL_1.x"/><LineBreak/><Run Text="grnR,shared\underground\0001-green-grassR_1.x"/><LineBreak/><Run Text="wuL1,shared\underground\UwallR01.x"/><LineBreak/><Run Text="wuR1,shared\underground\UwallL01.x"/><LineBreak/><Run Text="uEt1,shared\underground\EntDt1_1.x"/><LineBreak/><Run Text="uEx1,shared\underground\ExDt1_1.x"/><LineBreak/><Run Text="uWL1,shared\underground\UTwallL_1.x"/><LineBreak/><Run Text="uWR1,shared\underground\UTwallR_1.x"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="700;"/><LineBreak/><Run Text="&#x9;Legacy.Pitch(-30);"/><LineBreak/><Run Text="&#x9;Track['Ground'].Position(0, -0.6);"/><LineBreak/><Run Text="&#x9;Repeater['Ground'].End();"/><LineBreak/><Run Text="&#x9;Track['GroundL'].Position(0, -0.6);"/><LineBreak/><Run Text="&#x9;Track['GroundR'].Position(3.8, -0.6);"/><LineBreak/><Run Text="&#x9;Repeater['GugL'].Begin('GroundL', -2.7, 0, 0, 0, 0, 0, 1, 25, 25,'grnL');"/><LineBreak/><Run Text="&#x9;Repeater['GugR'].Begin('GroundR', 2.7, 0, 0, 0, 0, 0, 1, 25, 25,'grnR');"/><LineBreak/><Run Text="&#x9;Repeater['wuL_0'].Begin0('GroundL', 1, 25, 25,'wuL1');"/><LineBreak/><Run Text="&#x9;Repeater['wuR_0'].Begin0('GroundR', 1, 25, 25,'wuR1');"/><LineBreak/><Run Text="900;"/><LineBreak/><Run Text="&#x9;# ug entrance"/><LineBreak/><Run Text="&#x9;Structure['uEt1'].Put(, 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Repeater['wuL_0'].End();"/><LineBreak/><Run Text="&#x9;Repeater['wuR_0'].End();&#x9;"/><LineBreak/><Run Text="&#x9;Repeater['GugL'].End();"/><LineBreak/><Run Text="&#x9;Repeater['GugR'].End();&#x9;"/><LineBreak/><Run Text="&#x9;CabIlluminance.Set(1);"/><LineBreak/><Run Text="&#x9;RollingNoise.Change(4);"/><LineBreak/><Run Text="&#x9;"/><LineBreak/><Run Text="905;"/><LineBreak/><Run Text="&#x9;CabIlluminance.Set(0);"/><LineBreak/><Run Text="&#x9;Repeater['uWL_0'].Begin0(, 1, 5, 5,'uWL1');"/><LineBreak/><Run Text="&#x9;Repeater['uWR_0'].Begin0('1', 1, 5, 5,'uWR1');"/><LineBreak/><Run Text="&#x9;Repeater['Ground'].Begin0('Ground', 1, 25, 25,'grnD');"/><LineBreak/><Run Text="&#x9;Repeater['railbase_0'].Begin(, 0, 0, 0, 0, 0, 0, 3, 5, 5,'darkballast');"/><LineBreak/><Run Text="&#x9;Repeater['railL_0'].Begin(, 0, 0, 0, 0, 0, 0, 3, 5, 5,'railL_D');"/><LineBreak/><Run Text="&#x9;Repeater['railR_0'].Begin(, 0, 0, 0, 0, 0, 0, 3, 5, 5,'railR_D');"/><LineBreak/><Run Text="&#x9;Repeater['railbase_1'].Begin('1', 0, 0, 0, 0, 0, 0, 3, 5, 5,'darkballast');"/><LineBreak/><Run Text="&#x9;Repeater['railL_1'].Begin('1', 0, 0, 0, 0, 0, 0, 3, 5, 5,'railL_D');"/><LineBreak/><Run Text="&#x9;Repeater['railR_1'].Begin('1', 0, 0, 0, 0, 0, 0, 3, 5, 5,'railR_D');"/></TextBlock>
+                            <Label x:Name="labelS14_Txt26" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="14,1200.58,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxUGImage" Height="23" Margin="191.127,1200.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421"/>
+                            <Button x:Name="buttonBrowseUGImage" Content="Browse ..." HorizontalAlignment="Left" Margin="617.127,1203.58,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonAddNewUG" Content="Add +" HorizontalAlignment="Left" Margin="691.5,1246.58,0,0" VerticalAlignment="Top" Width="75"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="576,1231.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="47,1238.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515">
+                                <TextBlock x:Name="textBlockS14_Txt27" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 15 (Free Objects)" ToolTip="Other objects list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridFO" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Type" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="File" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS15_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxFOName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS15_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxFOTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <GroupBox x:Name="groupBoxS15_Txt03" Header="BVE structure (.x files)" Margin="10,92.58,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="104.5" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS15_Txt04" Content="Structure file" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <TextBox x:Name="textBoxFOfile" Height="23" Margin="196.56,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387"/>
+                                    <Button x:Name="buttonBrowseFOfile" Content="Browse ..." HorizontalAlignment="Right" Margin="0,13,83.08,0" VerticalAlignment="Top" Width="75"/>
+                                    <ComboBox x:Name="comboBoxFOType" HorizontalAlignment="Left" Margin="196.56,44.96,0,0" Width="120" VerticalAlignment="Top">
+                                        <ComboBoxItem Content="building"/>
+                                        <ComboBoxItem Content="house"/>
+                                        <ComboBoxItem Content="tree"/>
+                                        <ComboBoxItem Content="landscape"/>
+                                        <ComboBoxItem Content="road"/>
+                                        <ComboBoxItem Content="fence"/>
+                                        <ComboBoxItem Content="train"/>
+                                        <ComboBoxItem Content="others vehicle"/>
+                                        <ComboBoxItem Content="sign"/>
+                                        <ComboBoxItem Content="rail object"/>
+                                        <ComboBoxItem Content="structure"/>
+                                        <ComboBoxItem Content="machine"/>
+                                        <ComboBoxItem Content="station object"/>
+                                        <ComboBoxItem Content="overbridge"/>
+                                        <ComboBoxItem Content="others"/>
+                                    </ComboBox>
+                                    <Label x:Name="labelS15_Txt05" Content="Type" HorizontalAlignment="Left" Margin="10,40.96,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS15_Txt06" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,231.58,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxFOImage" Height="23" Margin="190.127,231.58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseFOImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,234.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewFO" Content="Add +" HorizontalAlignment="Left" Margin="690.5,277.58,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,262.58,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="46,269.141,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS15_Txt07" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 16 (etc.)" ToolTip="Other BVE structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
+                <Grid Background="#FF2E2E2E">
+                    <DataGrid x:Name="dataGridEtc" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Type" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Single" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RepeatLeft" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RepeatRight" />
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RepeatCycle" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                        <Grid>
+                            <Label x:Name="labelS16_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxEtcName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="labelS16_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                            <TextBox x:Name="textBoxEtcTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                            <Label x:Name="labelS16_Txt03" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="14,417.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                            <TextBox x:Name="textBoxEtcImage" Height="23" Margin="191.127,417.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonBrowseEtcImage" Content="Browse ..." HorizontalAlignment="Left" Margin="617.127,420.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <Button x:Name="buttonAddNewEtc" Content="Add +" HorizontalAlignment="Left" Margin="691.5,463.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                            <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="576,448.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                <ed:BlockArrow.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FF44C54A" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ed:BlockArrow.Fill>
+                            </ed:BlockArrow>
+                            <Viewbox Height="35" Margin="47,454.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                <TextBlock x:Name="textBlockS16_Txt04" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                            </Viewbox>
+                            <GroupBox x:Name="groupBoxS16_Txt05" Header="Single BVE structure" Margin="10,154.08,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="76" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS16_Txt06" Content="Structure file (.x files)" HorizontalAlignment="Left" Margin="10,10,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxEtc1Str" Margin="151.56,12.96,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="505.08" Height="23" VerticalAlignment="Top"/>
+                                    <Button x:Name="buttonBrowseEtc1Str" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,16,0,0" Width="75" VerticalAlignment="Top"/>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="labelS16_Txt07" Content="Type" HorizontalAlignment="Left" Margin="10,99.5,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="comboBoxEtcType" HorizontalAlignment="Left" Margin="97,103.5,0,0" Width="120" VerticalAlignment="Top">
+                                <ComboBoxItem Content="building"/>
+                                <ComboBoxItem Content="house"/>
+                                <ComboBoxItem Content="tree"/>
+                                <ComboBoxItem Content="landscape"/>
+                                <ComboBoxItem Content="road"/>
+                                <ComboBoxItem Content="fence"/>
+                                <ComboBoxItem Content="train"/>
+                                <ComboBoxItem Content="others vehicle"/>
+                                <ComboBoxItem Content="sign"/>
+                                <ComboBoxItem Content="rail object"/>
+                                <ComboBoxItem Content="structure"/>
+                                <ComboBoxItem Content="machine"/>
+                                <ComboBoxItem Content="station object"/>
+                                <ComboBoxItem Content="overbridge"/>
+                                <ComboBoxItem Content="others"/>
+                            </ComboBox>
+                            <GroupBox x:Name="groupBoxS16_Txt08" Header="Repeating BVE structure" Margin="10,235.08,0,0" HorizontalAlignment="Left" Width="758.64" Foreground="#FFA4A4A4" Height="156" VerticalAlignment="Top">
+                                <Grid Margin="0">
+                                    <Label x:Name="labelS16_Txt09" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,89.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS16_Txt10" Content="m" HorizontalAlignment="Left" Margin="210.517,89.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxEtcStrLeft" Height="23" Margin="8,41.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                    <Button x:Name="buttonBrowseEtcStrLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,69.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxEtcStrRight" Height="23" Margin="381.64,41.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                    <Button x:Name="buttonBrowseEtcStrRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,69.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelS16_Txt11" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,15.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <Label x:Name="labelS16_Txt12" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,15.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                    <xctk:IntegerUpDown x:Name="iudEtcStrCycle" HorizontalAlignment="Left" Margin="139.3,95.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Step 17 (Finishing)" ToolTip="Save or export .js data to GB Maps." Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold">
+                <Grid Background="#FF2E2E2E">
+                    <GroupBox x:Name="groupBox1_SaveXML" Header="Save structure data (.xml files)" Margin="410,369,0,0" HorizontalAlignment="Left" Width="268" Height="112" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                        <Grid Margin="0">
+                            <TextBox x:Name="textBoxSaveXML" Height="23" Margin="10,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="573.56"/>
+                            <Button x:Name="buttonBrowseSaveXML" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,13,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonSaveXML" Content="Save" HorizontalAlignment="Left" Margin="588.56,51.58,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox1_GenerateJS" Header="Generate GB Maps data (.js files)" Margin="683,374,0,0" HorizontalAlignment="Left" Width="307" Height="107" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                        <Grid Margin="0">
+                            <TextBox x:Name="textBoxGenerateJS" Height="23" Margin="10,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="573.56"/>
+                            <Button x:Name="buttonBrowseGenerateJS" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,13,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonGenerateJS" Content="Generate" HorizontalAlignment="Left" Margin="588.56,53.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox1_OpenXML" Header="Open saved data file  (.xml files)" Margin="113,360,0,0" HorizontalAlignment="Left" Width="292" Height="112" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                        <Grid Margin="0">
+                            <TextBox x:Name="textBoxOpenXML" Height="23" Margin="10,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="573.56"/>
+                            <Button x:Name="buttonBrowseOpenXML" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,13,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="buttonLoadXML" Content="Load" HorizontalAlignment="Left" Margin="588.56,51.58,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+                        </Grid>
+                    </GroupBox>
+                    <TextBlock x:Name="textBlock29" Margin="391,328,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Foreground="#FFA4A4A4"><Run Text="To create new file by clearing current data, please click New button &gt;&gt;  "/><InlineUIContainer>
+                            <Button
+                                d:LayoutOverrides="LeftPosition, RightPosition" Width="75" x:Name="buttonNew" Content="New" HorizontalAlignment="Left"/>
+                        </InlineUIContainer><Run Text=" "/></TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="About" Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold">
+                <Grid Background="#FF2E2E2E">
+                    <Image x:Name="image2" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="980" Source="theader2710214.jpg" Stretch="None"/>
+                    <Viewbox Margin="10,247.54,0,0" HorizontalAlignment="Left" Width="430" VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="GB Maps - ギビマップ Tools for BVE Trainsim" Foreground="#FFA4A4A4"/>
+                    </Viewbox>
+                    <TextBlock x:Name="textBlock6" Margin="15,407.6,10,0" TextWrapping="Wrap" Text="GB Maps - ギビマップ Tools for BVE Trainsim - © Karya IT 2012-2016. All rights reserved. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE." VerticalAlignment="Top" d:LayoutOverrides="Width" Foreground="#FFA4A4A4" FontSize="10"/>
+                    <TextBlock x:Name="textBlock7" Margin="103,447.28,10,0" TextWrapping="Wrap" Text="GB Maps - ギビマップ Tools for BVE Trainsim by Karya IT is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." VerticalAlignment="Top" Foreground="#FFA4A4A4" FontSize="10"/>
+                    <Image x:Name="Image1_png" HorizontalAlignment="Left" Height="31" Source="Image1.png" Stretch="Fill" VerticalAlignment="Top" Width="88" Margin="10,439.2,0,0"/>
+                    <Label x:Name="label46" Content="v3.0" HorizontalAlignment="Left" Margin="10,297.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <TextBlock x:Name="textBlock8" Margin="10,328,10,0" TextWrapping="Wrap" Text="description" VerticalAlignment="Top" Height="33.96" Foreground="#FFA4A4A4"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
