@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GBMapsToolBVET"
         xmlns:InstanceBuilders="clr-namespace:Microsoft.VisualStudio.DesignTools.WpfDesigner.InstanceBuilders;assembly=Microsoft.VisualStudio.DesignTools.WpfDesigner" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="GBToolsMain" x:Class="MainWindow"
         mc:Ignorable="d"
-        Title="GB Maps - ギビマップ Tools for BVE Trainsim" Height="580" Width="1024" Foreground="#FFA4A4A4" Background="#FF2C2C2C" Icon="GBToolIkon2.ico">
+        Title="GB Maps - ギビマップ Tools for BVE Trainsim" Height="578" Width="1024" Foreground="#FFA4A4A4" Background="#FF2C2C2C" Icon="GBToolIkon2.ico">
     <Grid Background="#FF272727" Margin="5">
         <TabControl x:Name="tabControl" Background="#FF878787" BorderBrush="#FF3E3E3E">
             <TabItem  x:Name="Step_1" Header="Step 1 (Basic Setting)" Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold" >
@@ -19,19 +19,30 @@
                     <Label x:Name="labelS1_Txt04" Content="default is &lt;gb maps folder&gt;\bve\bve5\conventional for conventional railway and &lt;gb maps folder&gt;\bve\bve5\hi-speed for shinkansen or high speed railway." HorizontalAlignment="Left" Margin="10,122.92,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                     <TextBox x:Name="textBoxBVEdataDir" Height="23" Margin="186.12,91.96,102.753,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     <Button x:Name="buttonBrowseBVEDataDir" Content="Browse ..." HorizontalAlignment="Right" Margin="0,94.96,22.753,0" VerticalAlignment="Top" Width="75"/>
-                    <Label x:Name="labelS1_Txt05" Content="Next, please set your GB Maps image folder, i.e. &lt;gb maps folder&gt;\images." HorizontalAlignment="Left" Margin="10,181.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                    <Label x:Name="labelS1_Txt06" Content="GB Maps image folder" HorizontalAlignment="Left" Margin="10,212.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                    <TextBox x:Name="textBoxGBimgDir" Height="23" Margin="186.12,215,102.753,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <Button x:Name="buttonGBImageDir" Content="Browse ..." HorizontalAlignment="Right" Margin="0,218.04,22.753,0" VerticalAlignment="Top" Width="75"/>
-                    <Label x:Name="labelS1_Txt07" Content="Note : If you want to reload previously saved data (.xml file) OR clear all field and create a new data, please go to step 17." HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Foreground="#FFA4A4A4"/>
-                    <Image x:Name="bvedatadir_jpg" Margin="10,250,0,0" Source="bvedatadir.jpg" Stretch="Fill" HorizontalAlignment="Left" Width="490" VerticalAlignment="Top" Height="175" Opacity="0.5"/>
-                    <Image x:Name="imgdir_jpg" HorizontalAlignment="Left" Height="190" Margin="520,250,0,0" Source="imgdir.jpg" Stretch="Fill" VerticalAlignment="Top" Width="395" Opacity="0.5"/>
+                    <Label x:Name="labelS1_Txt05" Content="Next, please set your GB Maps image folder, i.e. &lt;gb maps folder&gt;\images." HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Label x:Name="labelS1_Txt06" Content="GB Maps image folder" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <TextBox x:Name="textBoxGBimgDir" Height="23" Margin="186,185,102,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonGBImageDir" Content="Browse ..." HorizontalAlignment="Right" Margin="0,186,23,0" VerticalAlignment="Top" Width="75"/>
+                    <Label x:Name="labelS1_Txt07" Content="and then, ...." HorizontalAlignment="Left" Margin="10,378,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" Width="78"/>
+                    <Image x:Name="bvedatadir_jpg" Margin="22,226,0,0" Source="bvedatadir.jpg" Stretch="None" HorizontalAlignment="Left" Width="443" VerticalAlignment="Top" Height="150" Opacity="0.5"/>
+                    <Image x:Name="imgdir_jpg" HorizontalAlignment="Left" Height="163" Margin="532,226,0,0" Source="imgdir.jpg" Stretch="None" VerticalAlignment="Top" Width="396" Opacity="0.5"/>
                     <ComboBox x:Name="comboBoxLanguage" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="120">
                         <ComboBoxItem Content="English" IsSelected="True"/>
                         <ComboBoxItem Content="Bahasa Melayu"/>
                     </ComboBox>
                     <Label x:Name="labelLanguage" Content="Language:" HorizontalAlignment="Right" Margin="0,10,135,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                    <Button x:Name="buttonGenControlXMLTxt" Content="SaveTxtList" HorizontalAlignment="Right" Margin="0,13,208.173,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="buttonGenControlXMLTxt" Content="SaveTxtList" HorizontalAlignment="Left" Margin="0,13,208.173,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="buttonOpenXML" HorizontalAlignment="Left" Margin="36,403,0,0" VerticalAlignment="Top" Width="64" Height="64">
+                        <Image x:Name="imageOpenXML" Height="64" Width="64" Source="open-xml64.png" Stretch="None" HorizontalAlignment="Right" RenderTransformOrigin="1.078,0.47" ToolTip="Open exxisting file (.xml)"/>
+                    </Button>
+                    <Button x:Name="buttonNewXML" Margin="580,403,0,0" VerticalAlignment="Top" Height="64" HorizontalAlignment="Left" Width="64">
+                        <Image x:Name="imageNewXML" Height="64" Width="64" Source="tab_new_raised64.png" Stretch="None" HorizontalAlignment="Right" ToolTip="Create new data"/>
+                    </Button>
+                    <Label x:Name="labelS1_Txt08" Content="Open previously saved data" HorizontalAlignment="Left" Margin="105,419,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Label x:Name="labelS1_Txt09" Content="Create new data" Margin="649,419,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" HorizontalAlignment="Left"/>
+                    <Viewbox Height="100" Margin="377,379,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100">
+                        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="OR" Foreground="#FFA4A4A4"/>
+                    </Viewbox>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Step_2" Header="Step 2 (Rails)" ToolTip="Setup basic rail structures. Ballast type, slab type, etc." Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -161,7 +172,7 @@
                             <Label x:Name="labelS2_Txt32" Content="(optional)" HorizontalAlignment="Left" Margin="222,88.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                         </Grid>
                     </ScrollViewer>
-                    <Image x:Name="image" HorizontalAlignment="Left" Height="139" Margin="829,322.08,0,0" VerticalAlignment="Top" Width="154"/>
+                    <Image x:Name="imageRail" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 3 (Poles)" ToolTip="Setup poles and overhead wire structures." Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -222,6 +233,7 @@
 
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 4 (Running Trainset)" ToolTip="Create running trainset list." Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -243,6 +255,7 @@
                             <Button x:Name="buttonRetriveTrainFolder" Content="Retrive" HorizontalAlignment="Right" Margin="0,100.08,35,0" VerticalAlignment="Top" Width="75"/>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy1" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 5 (Sound files)" ToolTip="Include sound files" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -286,6 +299,7 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy2" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 6 (Tunnel)" ToolTip="Tunnel structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -355,6 +369,7 @@
                             <TextBlock x:Name="textBlockS6_Txt17" HorizontalAlignment="Left" Margin="10,804.37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="TunS_tun1LR,tunnel\tunnel0\tunstart1.x"/><LineBreak/><Run Text="TunL1_0,tunnel\tunnel0\tunnel1ls.x"/><LineBreak/><Run Text="TunR1_0,tunnel\tunnel0\tunnel1rs.x"/><LineBreak/><Run Text="TunL2_0,tunnel\tunnel0\tunnel1l.x"/><LineBreak/><Run Text="TunR2_0,tunnel\tunnel0\tunnel1r.x"/><LineBreak/><Run Text="TunL4_0,tunnel\tunnel0\tunnel1le.x"/><LineBreak/><Run Text="TunR4_0,tunnel\tunnel0\tunnel1re.x"/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="16225;"/><LineBreak/><Run Text="&#x9;...."/><LineBreak/><Run Text="&#x9;Structure['TunS_tun1LR'].Put('0', 0, 0, 0, 0, 0, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;...."/><LineBreak/><Run Text="&#x9;# tunnel"/><LineBreak/><Run Text="&#x9;Repeater['TunL2_0'].Begin('0', 0.5, 0, 0, 0, 0, 0, 1, 25, 25,'TunL2_0');"/><LineBreak/><Run Text="&#x9;Repeater['TunR2_0'].Begin('1', -0.5, 0, 0, 0, 0, 0, 1, 25, 25,'TunR2_0');&#x9;"/><LineBreak/><Run/><LineBreak/><Run Text="21200;"/><LineBreak/><Run Text="&#x9;...."/><LineBreak/><Run Text="&#x9;Repeater['TunL2_0'].End();"/><LineBreak/><Run Text="&#x9;Repeater['TunR2_0'].End();"/></TextBlock>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy3" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Setup 7 (Bridges)" ToolTip="Bridge structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -423,6 +438,7 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy4" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 8 (Overpass)" ToolTip="Overpass/Flyover structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -485,6 +501,7 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy5" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 9 (Hill Cuts)" ToolTip="Hill cut structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -539,6 +556,59 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Grid Background="#FF2E2E2E">
+                        <DataGrid x:Name="dataGridHillCut1" Margin="10,10,10,0" Height="202" VerticalAlignment="Top">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title" />
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Images"/>
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallLeft" />
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="WallRight" />
+                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
+                            <Grid>
+                                <Label x:Name="labelS9_Txt1" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                <TextBox x:Name="textBoxHillCutName1" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                                <Label x:Name="labelS9_Txt2" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                <TextBox x:Name="textBoxHillCutTitle1" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                                <GroupBox x:Name="groupBoxS9_Txt1" Header="BVE structure (.x files)" Margin="10,90.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="493.58" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                                    <Grid Margin="0">
+                                        <Label x:Name="labelS9_Txt3" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                        <Label x:Name="labelS9_Txt4" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
+                                        <TextBox x:Name="textBoxHillCutLeft1" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
+                                        <Button x:Name="buttonBrowseHillCutLeft1" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+                                        <Label x:Name="labelS9_Txt5" Content="Hill cut structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                        <TextBox x:Name="textBoxHillCutRight1" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                        <Button x:Name="buttonBrowseHillCutRight1" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
+                                        <Label x:Name="labelS9_Txt6" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                        <Label x:Name="labelS9_Txt7" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                                        <xctk:IntegerUpDown x:Name="IntegerUpDownCycle1" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                        <Image x:Name="image3" HorizontalAlignment="Left" Margin="536.3,-443.96,-289.66,0" VerticalAlignment="Top" Source="fo.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
+                                        <Image x:Name="image5" Margin="123.973,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="hilcut.jpg" HorizontalAlignment="Left" Width="500" Height="307"/>
+                                    </Grid>
+                                </GroupBox>
+                                <Label x:Name="labelS9_Txt8" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,605.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
+                                <TextBox x:Name="textBoxHillCutImage1" Height="23" Margin="190.127,605.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
+                                <Button x:Name="buttonBrowseHillCutImage1" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,608.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                <Button x:Name="buttonAddNewHillCut1" Content="Add +" HorizontalAlignment="Left" Margin="690.5,651.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
+                                <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,636.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
+                                    <ed:BlockArrow.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="Black" Offset="0"/>
+                                            <GradientStop Color="#FF44C54A" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </ed:BlockArrow.Fill>
+                                </ed:BlockArrow>
+                                <Viewbox Height="35" Margin="46,642.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
+                                    <TextBlock x:Name="textBlockS9_Txt1" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
+                                </Viewbox>
+                            </Grid>
+                        </ScrollViewer>
+                        <Image x:Name="imageRail_Copy6" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 10 (Dikes)" ToolTip="Dike structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -592,6 +662,7 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy12" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 11 (Road Crossing)" ToolTip="Road Crossing structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -650,6 +721,7 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy11" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 12 (Platfoms)" ToolTip="Platfom structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -672,7 +744,7 @@
                             <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RoofCycle" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ScrollViewer HorizontalAlignment="Left" Margin="10,212,0,10" Width="808">
+                    <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
                         <Grid>
                             <Label x:Name="labelS12_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                             <TextBox x:Name="textBoxPlatformName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -740,6 +812,7 @@
                             <TextBlock x:Name="textBlockS12_Txt20" HorizontalAlignment="Left" Margin="10,959.13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="FormCL0,Stations\PfCL.x"/><LineBreak/><Run Text="FormCL1,Stations\PfCL1.x"/><LineBreak/><Run Text="FormCR0,Stations\PfCR.x"/><LineBreak/><Run Text="FormCR1,Stations\PfCR1.x"/><LineBreak/><Run Text="FormL0,Stations\PfL.x"/><LineBreak/><Run Text="FormR0,Stations\PfR.x"/><LineBreak/><Run Text="RoofCL1,Stations\RoofCL.x"/><LineBreak/><Run Text="RoofCR1,Stations\RoofCR.x"/><LineBreak/><Run Text="RoofL1,Stations\RoofL.x"/><LineBreak/><Run Text="RoofR1,Stations\RoofR.x"/><LineBreak/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="2;"/><LineBreak/><Run Text="&#x9;Structure['FormL0'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['FormCL0'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofL1'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofCL1'].Put0('', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['FormR0'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['FormCR0'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofR1'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="&#x9;Structure['RoofCR1'].Put0('Opp', 1, 25);"/><LineBreak/><Run Text="23;"/><LineBreak/><Run Text="&#x9;Station['Midoridai'].Put(-1, -2, 2);"/><LineBreak/><Run Text="&#x9;Train['Oncoming'].Stop(3, 0, 0, 0);"/><LineBreak/><Run Text="&#x9;Structure['StopS'].Put('', 1.7, 0, 0, 0, 15, 0, 1, 25);"/></TextBlock>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy10" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 13 (Cracks)" ToolTip="Crack structure list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -794,6 +867,7 @@
                             <TextBlock x:Name="textBlockS13_Txt11" HorizontalAlignment="Left" Margin="10,894.6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFA4A4A4"><Run Text="Example : "/><LineBreak/><Run/><LineBreak/><Run Text="declaration in structure.txt"/><LineBreak/><Run/><LineBreak/><Run Text="BveTs Structure List 2.00:UTF-8"/><LineBreak/><Run Text="...."/><LineBreak/><Run Text="CraSR,crack\slab\CraSlbR.x"/><LineBreak/><Run Text="CraSL,crack\slab\CraSlbL.x"/><LineBreak/><Run/><LineBreak/><Run Text="usage syntax in map.txt"/><LineBreak/><Run Text="27900;&#x9;"/><LineBreak/><Run Text="&#x9;....."/><LineBreak/><Run Text="&#x9;Structure['CraSR'].PutBetween('0','4');"/><LineBreak/><Run Text="&#x9;Structure['CraSR'].PutBetween('5','1');"/></TextBlock>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy9" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 14 (Undergrounds)" ToolTip="Underground structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -955,6 +1029,7 @@
                             </Viewbox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy8" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 16 (etc.)" ToolTip="Other BVE structures list" Background="#FF878787" BorderBrush="#FF3E3E3E">
@@ -1033,35 +1108,19 @@
                             </GroupBox>
                         </Grid>
                     </ScrollViewer>
+                    <Image x:Name="imageRail_Copy7" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Step 17 (Finishing)" ToolTip="Save or export .js data to GB Maps." Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold">
                 <Grid Background="#FF2E2E2E">
-                    <GroupBox x:Name="groupBox1_SaveXML" Header="Save structure data (.xml files)" Margin="410,369,0,0" HorizontalAlignment="Left" Width="268" Height="112" VerticalAlignment="Top" Foreground="#FFA4A4A4">
-                        <Grid Margin="0">
-                            <TextBox x:Name="textBoxSaveXML" Height="23" Margin="10,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="573.56"/>
-                            <Button x:Name="buttonBrowseSaveXML" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,13,0,0" VerticalAlignment="Top" Width="75"/>
-                            <Button x:Name="buttonSaveXML" Content="Save" HorizontalAlignment="Left" Margin="588.56,51.58,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox x:Name="groupBox1_GenerateJS" Header="Generate GB Maps data (.js files)" Margin="683,374,0,0" HorizontalAlignment="Left" Width="307" Height="107" VerticalAlignment="Top" Foreground="#FFA4A4A4">
-                        <Grid Margin="0">
-                            <TextBox x:Name="textBoxGenerateJS" Height="23" Margin="10,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="573.56"/>
-                            <Button x:Name="buttonBrowseGenerateJS" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,13,0,0" VerticalAlignment="Top" Width="75"/>
-                            <Button x:Name="buttonGenerateJS" Content="Generate" HorizontalAlignment="Left" Margin="588.56,53.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox x:Name="groupBox1_OpenXML" Header="Open saved data file  (.xml files)" Margin="113,360,0,0" HorizontalAlignment="Left" Width="292" Height="112" VerticalAlignment="Top" Foreground="#FFA4A4A4">
-                        <Grid Margin="0">
-                            <TextBox x:Name="textBoxOpenXML" Height="23" Margin="10,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="573.56"/>
-                            <Button x:Name="buttonBrowseOpenXML" Content="Browse ..." HorizontalAlignment="Left" Margin="588.56,13,0,0" VerticalAlignment="Top" Width="75"/>
-                            <Button x:Name="buttonLoadXML" Content="Load" HorizontalAlignment="Left" Margin="588.56,51.58,0,0" Width="75" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
-                        </Grid>
-                    </GroupBox>
-                    <TextBlock x:Name="textBlock29" Margin="391,328,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Foreground="#FFA4A4A4"><Run Text="To create new file by clearing current data, please click New button &gt;&gt;  "/><InlineUIContainer>
-                            <Button
-                                d:LayoutOverrides="LeftPosition, RightPosition" Width="75" x:Name="buttonNew" Content="New" HorizontalAlignment="Left"/>
-                        </InlineUIContainer><Run Text=" "/></TextBlock>
+                    <Button x:Name="buttonSaveXML" HorizontalAlignment="Left" Margin="156,120,0,0" Width="200" Height="200" VerticalAlignment="Top">
+                        <Image x:Name="image21" Height="128" Width="128" Source="save-xml.png" Stretch="None"/>
+                    </Button>
+                    <Button x:Name="buttonGenJS" HorizontalAlignment="Right" Margin="0,120,172,0" Width="200" Height="200" VerticalAlignment="Top">
+                        <Image x:Name="image7" Height="128" Width="128" Source="gbdata.png"/>
+                    </Button>
+                    <Label x:Name="labelSaveXML" Content="Save XML data" HorizontalAlignment="Left" Margin="215,328,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
+                    <Label x:Name="labelGenerateJS" Content="Generate GB Maps data" HorizontalAlignment="Right" Margin="0,328,196,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                 </Grid>
             </TabItem>
             <TabItem Header="About" Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold">

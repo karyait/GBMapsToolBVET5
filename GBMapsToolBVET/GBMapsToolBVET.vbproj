@@ -68,6 +68,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -269,6 +270,30 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="crystal_xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="system_config_boot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="open-xml64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="tab_new_raised64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="save-xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="convert-xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="gbdata.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

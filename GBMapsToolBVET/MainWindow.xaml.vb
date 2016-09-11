@@ -10,6 +10,8 @@ Imports System.ComponentModel
 
 Class MainWindow
     Friend bvedir, gbIdir, currDir As String
+    Friend newData As Boolean
+    Friend saved As Boolean
 
     Public Enum filetype
         x = 0
@@ -455,6 +457,36 @@ Class MainWindow
     End Sub
 
     Private Sub buttonAddNewBridge_Click(sender As Object, e As RoutedEventArgs) Handles buttonAddNewBridge.Click
+
+    End Sub
+
+    Private Sub buttonOpenXML_Click(sender As Object, e As RoutedEventArgs) Handles buttonOpenXML.Click
+
+    End Sub
+
+    Private Sub buttonNewXML_Click(sender As Object, e As RoutedEventArgs) Handles buttonNewXML.Click
+        dataGridRail.Items.Clear()
+        dataGridPoles.Items.Clear()
+        dataGridRunningTrain.Items.Clear()
+        dataGridSoundFiles.Items.Clear()
+        dataGridTunnel.Items.Clear()
+        dataGridBridge.Items.Clear()
+        dataGridOverpass.Items.Clear()
+        dataGridHillCut.Items.Clear()
+        dataGridDike.Items.Clear()
+        dataGridRC.Items.Clear()
+        dataGridPlatform.Items.Clear()
+        dataGridCrack.Items.Clear()
+        dataGridUG.Items.Clear()
+        dataGridFO.Items.Clear()
+        dataGridEtc.Items.Clear()
+    End Sub
+
+    Private Sub buttonSaveXML_Click(sender As Object, e As RoutedEventArgs) Handles buttonSaveXML.Click
+
+    End Sub
+
+    Private Sub buttonGenJS_Click(sender As Object, e As RoutedEventArgs) Handles buttonGenJS.Click
 
     End Sub
 End Class
