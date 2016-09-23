@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GBMapsToolBVET"
         xmlns:InstanceBuilders="clr-namespace:Microsoft.VisualStudio.DesignTools.WpfDesigner.InstanceBuilders;assembly=Microsoft.VisualStudio.DesignTools.WpfDesigner" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="GBToolsMain" x:Class="MainWindow"
         mc:Ignorable="d"
-        Title="GB Maps - ギビマップ Tools for BVE Trainsim" Height="578" Width="1024" Foreground="#FFA4A4A4" Background="#FF2C2C2C" Icon="GBToolIkon2.ico">
+        Title="GB Maps - ギビマップ Tools for BVE Trainsim" Height="1880.9" Width="1024" Foreground="#FFA4A4A4" Background="#FF2C2C2C" Icon="GBToolIkon2.ico">
     <Grid Background="#FF272727" Margin="5">
         <TabControl x:Name="tabControl" Background="#FF878787" BorderBrush="#FF3E3E3E">
             <TabItem  x:Name="Step_1" Header="Step 1 (Basic Setting)" Background="#FF878787" BorderBrush="#FF3E3E3E" FontWeight="Bold" >
@@ -49,28 +49,28 @@
                 <Grid Background="#FF2E2E2E">
                     <DataGrid x:Name="dataGridRail" Margin="10,10,10,0" VerticalAlignment="Top" Height="202">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Name"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Title"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Image" />
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Type"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Gauge"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper1"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL1"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR1"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper2"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL2"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR3"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper3"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL3"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR3"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper4"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL4"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR4"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sleeper5"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailL5"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="RailR5"/>
-                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Cycle"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailno" Binding="{Binding Header, ElementName=dataGridTextColumnRailno}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailname" Binding="{Binding Header, ElementName=dataGridTextColumnRailname}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailtitle" Binding="{Binding Header, ElementName=dataGridTextColumnRailtitle}" ClipboardContentBinding="{x:Null}" Header="Title"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailimage" Binding="{Binding Header, ElementName=dataGridTextColumnRailimage}" ClipboardContentBinding="{x:Null}" Header="Image" />
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailtype" Binding="{Binding Header, ElementName=dataGridTextColumnRailtype}" ClipboardContentBinding="{x:Null}" Header="Type"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailgauge" Binding="{Binding Header, ElementName=dataGridTextColumnRailgauge}" ClipboardContentBinding="{x:Null}" Header="Gauge"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRails1" Binding="{Binding Header, ElementName=dataGridTextColumnRails1}" ClipboardContentBinding="{x:Null}" Header="Sleeper1"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRaill1" Binding="{Binding Header, ElementName=dataGridTextColumnRaill1}" ClipboardContentBinding="{x:Null}" Header="RailL1"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailr1" Binding="{Binding Header, ElementName=dataGridTextColumnRailr1}" ClipboardContentBinding="{x:Null}" Header="RailR1"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRails2" Binding="{Binding Header, ElementName=dataGridTextColumnRails2}" ClipboardContentBinding="{x:Null}" Header="Sleeper2"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRaill2" Binding="{Binding Header, ElementName=dataGridTextColumnRaill2}" ClipboardContentBinding="{x:Null}" Header="RailL2"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailr2" Binding="{Binding Header, ElementName=dataGridTextColumnRailr2}" ClipboardContentBinding="{x:Null}" Header="RailR3"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRails3" Binding="{Binding Header, ElementName=dataGridTextColumnRails3}" ClipboardContentBinding="{x:Null}" Header="Sleeper3"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRaill3" Binding="{Binding Header, ElementName=dataGridTextColumnRaill3}" ClipboardContentBinding="{x:Null}" Header="RailL3"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailr3" Binding="{Binding Header, ElementName=dataGridTextColumnRailr3}" ClipboardContentBinding="{x:Null}" Header="RailR3"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRails4" Binding="{Binding Header, ElementName=dataGridTextColumnRails4}" ClipboardContentBinding="{x:Null}" Header="Sleeper4"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRaill4" Binding="{Binding Header, ElementName=dataGridTextColumnRaill4}" ClipboardContentBinding="{x:Null}" Header="RailL4"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailr4" Binding="{Binding Header, ElementName=dataGridTextColumnRailr4}" ClipboardContentBinding="{x:Null}" Header="RailR4"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRails5" Binding="{Binding Header, ElementName=dataGridTextColumnRails5}" ClipboardContentBinding="{x:Null}" Header="Sleeper5"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRaill5" Binding="{Binding Header, ElementName=dataGridTextColumnRaill5}" ClipboardContentBinding="{x:Null}" Header="RailL5"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailr5" Binding="{Binding Header, ElementName=dataGridTextColumnRailr5}" ClipboardContentBinding="{x:Null}" Header="RailR5"/>
+                            <DataGridTextColumn x:Name="dataGridTextColumnRailcycle" Binding="{Binding Header, ElementName=dataGridTextColumnRailcycle}" ClipboardContentBinding="{x:Null}" Header="Cycle"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <ScrollViewer Margin="10,217,0,10" HorizontalAlignment="Left" Width="808">
@@ -331,7 +331,7 @@
                                     <Label x:Name="labelS6_Txt07" Content="m" HorizontalAlignment="Left" Margin="288,365.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <TextBox x:Name="textBoxTunnelEntranceFile" Height="23" Margin="230.673,201.98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="418.837"/>
                                     <Button x:Name="buttonBrowseTunnelEntranceFile" Content="Browse ..." HorizontalAlignment="Left" Margin="654.51,202.02,0,0" VerticalAlignment="Top" Width="75"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownWall1Cycle" Margin="221.223,371.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownWall1Cycle" Margin="221.223,371.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>-->
                                     <Label x:Name="labelS6_Txt08" Content="Tunnel Entrance" HorizontalAlignment="Left" Margin="56.06,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Image x:Name="image4" Margin="611.06,42,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="TunExtD.jpg" Stretch="None"/>
                                     <Image x:Name="image6" Margin="246.56,42,0,0" VerticalAlignment="Top" Source="TunWallL.jpg" HorizontalAlignment="Left" Stretch="None"/>
@@ -408,12 +408,12 @@
                                     <Button x:Name="buttonBrowseBridgeRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS7_Txt08" Content="(Left structure)" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS7_Txt09" Content="(Right structure)" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownBridgeCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownBridgeCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/> -->
                                     <Label x:Name="labelS7_Txt10" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS7_Txt11" Content="m" HorizontalAlignment="Left" Margin="210.517,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownBridgePierCycle" HorizontalAlignment="Left" Margin="139.3,204,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownBridgePierCycle" HorizontalAlignment="Left" Margin="139.3,204,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Label x:Name="labelS7_Txt12" Content="m" HorizontalAlignment="Left" Margin="210.517,257.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownBridgeXCorrection" HorizontalAlignment="Left" Margin="139.3,263,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownBridgeXCorrection" HorizontalAlignment="Left" Margin="139.3,263,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Label x:Name="labelS7_Txt13" Content="Placement correction" HorizontalAlignment="Left" Margin="10,257.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS7_Txt14" Content="(+/- value)" HorizontalAlignment="Left" Margin="249,257.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Image x:Name="image9" Margin="286,316.54,0,0" VerticalAlignment="Top" Source="br2.jpg" Height="133" Width="200" HorizontalAlignment="Left" d:LayoutOverrides="Width" ToolTip="Deck type, left and right structure required"/>
@@ -476,10 +476,10 @@
                                     <Button x:Name="buttonBrowseOverPassWallRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS8_Txt08" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS8_Txt09" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownOverPassWallCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownOverPassWallCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Label x:Name="labelS8_Txt10" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS8_Txt11" Content="m" HorizontalAlignment="Left" Margin="210.517,198.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownOverPassPierCycle" HorizontalAlignment="Left" Margin="139.3,204,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownOverPassPierCycle" HorizontalAlignment="Left" Margin="139.3,204,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Image x:Name="image11" HorizontalAlignment="Left" Margin="536.3,-443.96,-289.66,0" VerticalAlignment="Top" Source="fo.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
                                     <Image x:Name="image12" Margin="122.973,248.04,0,0" VerticalAlignment="Top" Stretch="None" Source="fo.jpg" HorizontalAlignment="Left" Width="500" Height="198"/>
                                 </Grid>
@@ -520,29 +520,20 @@
                     <ScrollViewer HorizontalAlignment="Left" Margin="10,212,0,10" Width="808">
                         <Grid>
                             <Label x:Name="labelS9_Txt01" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                            <TextBox x:Name="textBoxHillCutName" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label x:Name="labelS9_Txt02" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                            <TextBox x:Name="textBoxHillCutTitle" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
                             <GroupBox x:Name="groupBoxS9_Txt03" Header="BVE structure (.x files)" Margin="10,90.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="493.58" VerticalAlignment="Top" Foreground="#FFA4A4A4">
                                 <Grid Margin="0">
                                     <Label x:Name="labelS9_Txt04" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS9_Txt05" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
-                                    <TextBox x:Name="textBoxHillCutLeft" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
-                                    <Button x:Name="buttonBrowseHillCutLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS9_Txt06" Content="Hill cut structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <TextBox x:Name="textBoxHillCutRight" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
-                                    <Button x:Name="buttonBrowseHillCutRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS9_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS9_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Image x:Name="image13" HorizontalAlignment="Left" Margin="536.3,-443.96,-289.66,0" VerticalAlignment="Top" Source="fo.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
                                     <Image x:Name="image14" Margin="123.973,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="hilcut.jpg" HorizontalAlignment="Left" Width="500" Height="307"/>
                                 </Grid>
                             </GroupBox>
                             <Label x:Name="labelS9_Txt09" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,605.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
-                            <TextBox x:Name="textBoxHillCutImage" Height="23" Margin="190.127,605.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
-                            <Button x:Name="buttonBrowseHillCutImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,608.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
-                            <Button x:Name="buttonAddNewHillCut" Content="Add +" HorizontalAlignment="Left" Margin="690.5,651.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
                             <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,636.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
                                 <ed:BlockArrow.Fill>
                                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -571,29 +562,23 @@
                         <ScrollViewer HorizontalAlignment="Left" Margin="10,217,0,10" Width="808">
                             <Grid>
                                 <Label x:Name="labelS9_Txt1" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                <TextBox x:Name="textBoxHillCutName1" HorizontalAlignment="Left" Height="23" Margin="97,12.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                                 <Label x:Name="labelS9_Txt2" Content="Title" HorizontalAlignment="Left" Margin="10,40.96,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                <TextBox x:Name="textBoxHillCutTitle1" HorizontalAlignment="Left" Height="23" Margin="97,43.92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
-                                <GroupBox x:Name="groupBoxS9_Txt1" Header="BVE structure (.x files)" Margin="10,90.08,0,0" HorizontalAlignment="Left" Width="758.64" Height="493.58" VerticalAlignment="Top" Foreground="#FFA4A4A4">
+                                <GroupBox x:Name="groupBoxS9_Txt1" Header="BVE structure (.x files)" Margin="10,84,0,0" HorizontalAlignment="Left" Width="759" Height="494" VerticalAlignment="Top" Foreground="#FFA4A4A4">
                                     <Grid Margin="0">
                                         <Label x:Name="labelS9_Txt3" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                         <Label x:Name="labelS9_Txt4" Content="m" HorizontalAlignment="Left" Margin="210.517,107.54,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
-                                        <TextBox x:Name="textBoxHillCutLeft1" Height="23" Margin="8,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353" d:LayoutOverrides="HorizontalAlignment"/>
-                                        <Button x:Name="buttonBrowseHillCutLeft1" Content="Browse ..." HorizontalAlignment="Left" Margin="286,87.55,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
                                         <Label x:Name="labelS9_Txt5" Content="Hill cut structure (.x file) - required" HorizontalAlignment="Left" Margin="8,10.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                        <TextBox x:Name="textBoxHillCutRight1" Height="23" Margin="381.64,59.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
-                                        <Button x:Name="buttonBrowseHillCutRight1" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                         <Label x:Name="labelS9_Txt6" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                         <Label x:Name="labelS9_Txt7" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                        <xctk:IntegerUpDown x:Name="IntegerUpDownCycle1" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
-                                        <Image x:Name="image3" HorizontalAlignment="Left" Margin="536.3,-443.96,-289.66,0" VerticalAlignment="Top" Source="fo.jpg" Stretch="None" d:LayoutOverrides="VerticalAlignment"/>
+                                        <!--<xctk:IntegerUpDown x:Name="IntegerUpDownCycle1" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                         <Image x:Name="image5" Margin="123.973,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="hilcut.jpg" HorizontalAlignment="Left" Width="500" Height="307"/>
+                                        <TextBox x:Name="textBoxHillCutLeft" Height="23" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
+                                        <Button x:Name="buttonBrowseHillCutRight" Content="Browse ..." HorizontalAlignment="Left" Margin="660,88,0,0" Width="75" VerticalAlignment="Top"/>
+                                        <Button x:Name="buttonBrowseHillCutLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="288,88,0,0" Width="75" VerticalAlignment="Top"/>
+                                        <TextBox x:Name="textBoxHillCutRight" Height="23" Margin="384,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="353"/>
                                     </Grid>
                                 </GroupBox>
                                 <Label x:Name="labelS9_Txt8" Content="Image File (for GB Maps only) :" HorizontalAlignment="Left" Margin="13,605.08,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4" d:LayoutOverrides="VerticalAlignment"/>
-                                <TextBox x:Name="textBoxHillCutImage1" Height="23" Margin="190.127,605.08,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421" d:LayoutOverrides="VerticalAlignment"/>
-                                <Button x:Name="buttonBrowseHillCutImage1" Content="Browse ..." HorizontalAlignment="Left" Margin="616.127,608.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
-                                <Button x:Name="buttonAddNewHillCut1" Content="Add +" HorizontalAlignment="Left" Margin="690.5,651.08,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="VerticalAlignment"/>
                                 <ed:BlockArrow HorizontalAlignment="Left" Height="50" Margin="575,636.08,0,0" Orientation="Right" Stroke="Black" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment">
                                     <ed:BlockArrow.Fill>
                                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -605,6 +590,11 @@
                                 <Viewbox Height="35" Margin="46,642.641,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="515" d:LayoutOverrides="VerticalAlignment">
                                     <TextBlock x:Name="textBlockS9_Txt1" TextWrapping="Wrap" Text="Don't forget to add record, click this button." Foreground="#FFDCD642"/>
                                 </Viewbox>
+                                <TextBox x:Name="textBoxHillCutName" HorizontalAlignment="Left" Height="23" Margin="97,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                                <TextBox x:Name="textBoxHillCutTitle" HorizontalAlignment="Left" Height="23" Margin="97,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+                                <TextBox x:Name="textBoxHillCutImage" Height="23" Margin="190,608,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="421"/>
+                                <Button x:Name="buttonBrowseHillCutImage" Content="Browse ..." HorizontalAlignment="Left" Margin="616,608,0,0" VerticalAlignment="Top" Width="75"/>
+                                <Button x:Name="buttonAddNewHillCut" Content="Add +" HorizontalAlignment="Left" Margin="694,656,0,0" VerticalAlignment="Top" Width="75"/>
                             </Grid>
                         </ScrollViewer>
                         <Image x:Name="imageRail_Copy6" HorizontalAlignment="Left" Height="139" Margin="830,220,0,0" VerticalAlignment="Top" Width="154"/>
@@ -641,7 +631,7 @@
                                     <Button x:Name="buttonBrowseDikeRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS10_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS10_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="IntegerUpDownDikeCylce" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="IntegerUpDownDikeCylce" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Image x:Name="image16" Margin="123.973,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="dike.jpg" HorizontalAlignment="Left" Width="500" Height="143"/>
                                 </Grid>
                             </GroupBox>
@@ -757,7 +747,7 @@
                                     <TextBox x:Name="textBoxPlatformLeft" Height="23" Margin="10,227.55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224" d:LayoutOverrides="HorizontalAlignment"/>
                                     <Button x:Name="buttonBrowsePlatformLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="159,255.55,0,0" VerticalAlignment="Top" Width="75" d:LayoutOverrides="HorizontalAlignment"/>
                                     <Button x:Name="buttonBrowsePlatformMiddleLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="410,255.55,0,0" VerticalAlignment="Top" Width="75"/>
-                                    <xctk:IntegerUpDown x:Name="iudPlatformCycle" Margin="221.223,386.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudPlatformCycle" Margin="221.223,386.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>-->
                                     <Button x:Name="buttonbrowsePlatformRight" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,255.55,0,0" VerticalAlignment="Top" Width="75"/>
                                     <Label x:Name="labelS12_Txt06" Content="(Left structure) - required" HorizontalAlignment="Left" Margin="49.433,196.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS12_Txt07" Content="(Right structure) - required" HorizontalAlignment="Right" Margin="0,196.59,43.75,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
@@ -782,7 +772,7 @@
                                     <TextBox x:Name="textBoxPlatformRoofLeft" Height="23" Margin="10,519.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224" d:LayoutOverrides="HorizontalAlignment"/>
                                     <Button x:Name="buttonBrowsePlatformRoofLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="159,547.05,0,0" Width="75" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
                                     <Button x:Name="buttonBrowsePlatformRoofMiddleLeft" Content="Browse ..." HorizontalAlignment="Left" Margin="410,547.05,0,0" Width="75" VerticalAlignment="Top"/>
-                                    <xctk:IntegerUpDown x:Name="iudPlatformRoofCycle" Margin="221.223,676.97,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudPlatformRoofCycle" Margin="221.223,676.97,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>-->
                                     <Button x:Name="buttonBrowsermRoofRight" Content="Browse ..." HorizontalAlignment="Left" Margin="661.64,547.05,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS12_Txt14" Content="(Left structure) - required" HorizontalAlignment="Left" Margin="49.433,488.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS12_Txt15" Content="(Right structure) - required" HorizontalAlignment="Right" Margin="0,488.09,43.749,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
@@ -845,7 +835,7 @@
                                     <Button x:Name="buttonBrowseCrackRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS13_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS13_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="iudCrackCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudCrackCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Image x:Name="image18" Margin="72.973,158.62,0,0" VerticalAlignment="Top" Stretch="None" Source="crack.jpg" HorizontalAlignment="Left"/>
                                 </Grid>
                             </GroupBox>
@@ -908,7 +898,7 @@
                                     <Button x:Name="buttonBrowseUGGroundRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,87.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS14_Txt07" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS14_Txt08" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,33.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="iudUGGroundCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudUGGroundCycle" HorizontalAlignment="Left" Margin="139.3,113.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Image x:Name="image19" Margin="23.473,149.62,0,0" VerticalAlignment="Top" Stretch="None" Source="ug1.jpg" HorizontalAlignment="Left"/>
                                     <Label x:Name="labelS14_Txt09" Content="Repeating cycle every" HorizontalAlignment="Left" Margin="10,409.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS14_Txt10" Content="m" HorizontalAlignment="Left" Margin="210.517,409.04,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
@@ -919,7 +909,7 @@
                                     <Button x:Name="buttonBrowseUGWallRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,389.05,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS14_Txt12" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,335.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS14_Txt13" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,335.09,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="iudUGoWallCycle" HorizontalAlignment="Left" Margin="139.3,415,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudUGoWallCycle" HorizontalAlignment="Left" Margin="139.3,415,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                     <Image x:Name="image19_Copy" Margin="273.973,455.12,272.667,0" VerticalAlignment="Top" Stretch="None" Source="ug2.jpg" d:LayoutOverrides="Width"/>
                                 </Grid>
                             </GroupBox>
@@ -930,7 +920,7 @@
                                     <Label x:Name="labelS14_Txt17" Content="m" HorizontalAlignment="Left" Margin="288,317.51,0,0" Foreground="#FFA4A4A4" VerticalAlignment="Top"/>
                                     <TextBox x:Name="textBoxUGEntrance" Height="23" Margin="221.223,162.98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="418.837"/>
                                     <Button x:Name="buttonBrowseUGEntrance" Content="Browse ..." HorizontalAlignment="Left" Margin="645.06,163.02,0,0" VerticalAlignment="Top" Width="75"/>
-                                    <xctk:IntegerUpDown x:Name="iudUGiWallcycle" Margin="221.223,323.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudUGiWallcycle" Margin="221.223,323.47,0,0" Increment="5" HorizontalAlignment="Left" Width="57.674" VerticalAlignment="Top"/>-->
                                     <Label x:Name="labelS14_Txt18" Content="Underground Entrance" HorizontalAlignment="Left" Margin="100.283,11.04,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Image x:Name="image20" HorizontalAlignment="Left" Height="100" Margin="116.223,42,0,0" VerticalAlignment="Top" Width="100" Source="ugtnent.jpg"/>
                                     <Image x:Name="image23" Height="100" Margin="311.56,42,315.08,0" VerticalAlignment="Top" Source="ugtnwall.jpg" Width="120"/>
@@ -1103,7 +1093,7 @@
                                     <Button x:Name="buttonBrowseEtcStrRight" Content="Browse ..." HorizontalAlignment="Left" Margin="659.64,69.55,0,0" Width="75" VerticalAlignment="Top"/>
                                     <Label x:Name="labelS16_Txt11" Content="(Left structure)  - required" HorizontalAlignment="Left" Margin="126.973,15.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
                                     <Label x:Name="labelS16_Txt12" Content="(Right structure)  - required" HorizontalAlignment="Left" Margin="501.383,15.59,0,0" VerticalAlignment="Top" Foreground="#FFA4A4A4"/>
-                                    <xctk:IntegerUpDown x:Name="iudEtcStrCycle" HorizontalAlignment="Left" Margin="139.3,95.5,0,0" VerticalAlignment="Top" Width="66.217"/>
+                                    <!--<xctk:IntegerUpDown x:Name="iudEtcStrCycle" HorizontalAlignment="Left" Margin="139.3,95.5,0,0" VerticalAlignment="Top" Width="66.217"/>-->
                                 </Grid>
                             </GroupBox>
                         </Grid>

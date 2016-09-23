@@ -310,23 +310,34 @@ Class MainWindow
     End Function
 
     Public Sub UpdateXFileField(TB As Windows.Controls.TextBox, file As filetype)
+        If bvedir Is Nothing And file = filetype.x Then
+            MessageBox.Show("Please set default bve folder in step 1, first.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
+        If gbIdir Is Nothing And file = filetype.img Then
+            MessageBox.Show("Please set default image folder in step 1, first.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
+
         Dim FileDialog As New OpenFileDialog
         With FileDialog
             .AddExtension = True
             .CheckFileExists = True
             .CheckPathExists = True
-            If IO.Directory.Exists(currDir) Then .InitialDirectory = currDir
+
             .Multiselect = False
             .CheckFileExists = True
             .CheckPathExists = True
             .DereferenceLinks = True
             Select Case file
                 Case filetype.x
-                    .Filter = "DirectX 3D object|*.x"
+                    .Filter = "DirectX 3D object (*.x)|*.x"
+                    If IO.Directory.Exists(currDir) Then .InitialDirectory = currDir
                 Case filetype.img
                     .Filter = "Image Files (*.gif, *.jpg, *.png)|*.gif;*.jpg;*.png"
+                    If IO.Directory.Exists(gbIdir) Then .InitialDirectory = gbIdir
                 Case filetype.wav
-                    .Filter = "Sound Files|*.wav"
+                    .Filter = "Sound Files (*.wav)|*.wav"
                 Case Else
                     .Filter = "All files|*.*"
             End Select
@@ -336,16 +347,16 @@ Class MainWindow
             Select Case file
                 Case filetype.x
                     TB.Text = FileDialog.FileName.ToLower.Replace(bvedir.ToLower & "\", "")
+                    currDir = My.Computer.FileSystem.GetParentPath(FileDialog.FileName)
                 Case filetype.img
                     TB.Text = FileDialog.FileName.ToLower.Replace(gbIdir.ToLower & "\", "")
                 Case filetype.wav
                     Dim filename = "sounds\" & My.Computer.FileSystem.GetFileInfo(FileDialog.FileName).Name
                     TB.Text = filename
                 Case Else
-                    TB.Text = FileDialog.FileName.ToLower.Replace(bvedir.ToLower & "\", "")
+                    TB.Text = FileDialog.FileName.ToLower
             End Select
 
-            currDir = My.Computer.FileSystem.GetParentPath(FileDialog.FileName)
         End If
     End Sub
 
@@ -405,7 +416,50 @@ Class MainWindow
     End Sub
 
     Private Sub buttonNewRail_Click(sender As Object, e As RoutedEventArgs) Handles buttonNewRail.Click
+        Dim no As Integer
+        If textBoxRailName.Text <> "" And textBoxRailTitle.Text <> "" And textBoxRailSleeper1.Text <> "" _
+            And textRailLeft1.Text <> "" And textRailRight1.Text <> "" And comboBoxRailType.Text <> "" _
+            And (Integer.TryParse(textBoxRailCycle.Text, no)) And textBoxRailImage.Text <> "" Then
+            'dataGridRail.Items.Add(New String() {dataGridRail.Items.Count - 1, textBoxRailName.Text, textBoxRailTitle.Text,
+            '   textBoxRailImage.Text, comboBoxRailType.Text, comboBoxRailGauge.Text, textBoxRailSleeper1.Text, textRailLeft1.Text,
+            '   textRailRight1.Text, textBoxRailSleeper2.Text, textRailLeft2.Text, textRailRight2.Text, textBoxRailSleeper3.Text,
+            '   textRailLeft3.Text, textRailRight3.Text, textBoxRailSleeper4.Text, textRailLeft4.Text, textRailRight4.Text,
+            '   textBoxRailSleeper5.Text, textRailLeft5.Text, textRailRight5.Text, textBoxRailCycle.Text})
+            'Dim a = dataGridRail.Items.Count
+            'Dim datalist As ItemCollection = New ItemCollection With ()
+            'dataGridRail.ItemsSource = datalist
+            'dataGridRail.ItemsSource(New List With [dataGridRail.Items.Count - 1, textBoxRailName.Text, textBoxRailTitle.Text,
+            '   textBoxRailImage.Text, comboBoxRailType.Text, comboBoxRailGauge.Text, textBoxRailSleeper1.Text, textRailLeft1.Text,
+            '   textRailRight1.Text, textBoxRailSleeper2.Text, textRailLeft2.Text, textRailRight2.Text, textBoxRailSleeper3.Text,
+            '   textRailLeft3.Text, textRailRight3.Text, textBoxRailSleeper4.Text, textRailLeft4.Text, textRailRight4.Text,
+            '   textBoxRailSleeper5.Text, textRailLeft5.Text, textRailRight5.Text, textBoxRailCycle.Text])
+            'datalist.Add({(dataGridRail.Items.Count - 1).ToString, textBoxRailName.Text, textBoxRailTitle.Text,
+            '   textBoxRailImage.Text, comboBoxRailType.Text, comboBoxRailGauge.Text, textBoxRailSleeper1.Text, textRailLeft1.Text,
+            '   textRailRight1.Text, textBoxRailSleeper2.Text, textRailLeft2.Text, textRailRight2.Text, textBoxRailSleeper3.Text,
+            '   textRailLeft3.Text, textRailRight3.Text, textBoxRailSleeper4.Text, textRailLeft4.Text, textRailRight4.Text,
+            '   textBoxRailSleeper5.Text, textRailLeft5.Text, textRailRight5.Text, textBoxRailCycle.Text})
 
+            Dim dr As DataRow
+            dr = dataGridRail.NewRow()
+            dr("Status") = 4
+            dr("ID") = "0"
+            dr("Name") = ""
+            dr("CountryId") = "0"
+            dataGridRail.Rows.Add(dr)
+
+            WpfControlLibrary1.DataGridExtensions.SelectRowByIndex(dataGridRail, dataGridRail.Items.Count - 1)
+        Else
+            Dim msg As New StringBuilder
+            If textBoxRailName.Text = "" Then msg.AppendLine("Rail name is required.")
+            If textBoxRailTitle.Text = "" Then msg.AppendLine("Rail title is required.")
+            If comboBoxRailType.Text = "" Then msg.AppendLine("Type of rail is required.")
+            If textBoxRailImage.Text = "" Then msg.AppendLine("Rail image is required")
+            If textBoxRailSleeper1.Text = "" Then msg.AppendLine("First rail sleeper is required")
+            If textRailLeft1.Text = "" Then msg.AppendLine("First left rail is required")
+            If textRailRight1.Text = "" Then msg.AppendLine("First right rail is required")
+            If Not Integer.TryParse(textBoxRailCycle.Text, no) Then msg.AppendLine("Please state structure repeating cycle, every 5 m, 25m etc.")
+            MessageBox.Show(msg.ToString, "Sorry! Incomplete data", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 
     Private Sub buttonAddNewUG_Click(sender As Object, e As RoutedEventArgs) Handles buttonAddNewUG.Click
@@ -461,6 +515,71 @@ Class MainWindow
     End Sub
 
     Private Sub buttonOpenXML_Click(sender As Object, e As RoutedEventArgs) Handles buttonOpenXML.Click
+        Dim basedir As String
+
+        If gbIdir = "" Then
+            MessageBox.Show("Please set image dir first")
+
+        Else
+            basedir = gbIdir.ToLower.Replace("\images", "")
+
+            Dim FileDialog As New OpenFileDialog
+            With FileDialog
+                .AddExtension = True
+                .CheckFileExists = True
+                .CheckPathExists = True
+                If basedir <> "" Then .InitialDirectory = basedir
+                .Multiselect = False
+                .CheckFileExists = True
+                .CheckPathExists = True
+                .DereferenceLinks = True
+                .Filter = "XML files (*.xml)|*.xml"
+            End With
+            If FileDialog.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+                Dim filename As String = FileDialog.FileName
+                Dim teks As String = My.Computer.FileSystem.ReadAllText(filename)
+                Dim arrRow As String() = teks.Split(vbCrLf)
+                For Each drow As String In arrRow
+                    Dim dd As String() = drow.Split(",")
+                    Select Case dd(0).Trim()
+                        Case "rail"
+                            Dim dty As String() = dd(4).Split("_")
+                            dataGridRail.Items.Add(New String() {dd(1), dd(2), dd(3), dty(0), dty(1), dd(6), dd(5), dd(7), dd(8), dd(9), dd(10), dd(11), dd(12), dd(13), dd(14), dd(15)})
+                        Case "poles"
+                            dataGridPoles.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6)})
+                        Case "traindir"
+                            dataGridRunningTrain.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5)})
+                        Case "spund"
+                            dataGridSoundFiles.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5)})
+                        Case "tunnel"
+                            dataGridTunnel.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7), dd(8), dd(9), dd(10), dd(11), dd(12), dd(13), dd(14), dd(15), dd(16)})
+                        Case "bridge"
+                            dataGridBridge.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7), dd(8), dd(9), dd(10), dd(11)})
+                        Case "overpass"
+                            dataGridOverpass.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7), dd(8), dd(9)})
+                        Case "hillcut"
+                            dataGridHillCut.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7)})
+                        Case "dike"
+                            dataGridDike.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7)})
+                        Case "rc"
+                            dataGridRC.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7), dd(8)})
+                        Case "platform"
+                            dataGridPlatform.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7), dd(8), dd(9), dd(10), dd(11), dd(12), dd(13)})
+                        Case "cracks"
+                            dataGridCrack.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7)})
+                        Case "ug"
+                            dataGridUG.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7)})
+                        Case "fo"
+                            dataGridFO.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6)})
+                        Case "etc"
+                            dataGridEtc.Items.Add(New String() {dd(1), dd(2), dd(3), dd(4), dd(5), dd(6), dd(7), dd(8), dd(9)})
+                        Case Else
+
+                    End Select
+                Next
+            End If
+        End If
+
 
     End Sub
 
@@ -488,5 +607,20 @@ Class MainWindow
 
     Private Sub buttonGenJS_Click(sender As Object, e As RoutedEventArgs) Handles buttonGenJS.Click
 
+    End Sub
+
+    Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        If File.Exists("5config.xml") = True Then
+            Try
+                Dim xCfile As XDocument = XDocument.Load("5config.xml")
+                textBoxBVEdataDir.Text = xCfile.<dir>.<bve>.Value
+                textBoxGBimgDir.Text = xCfile.<dir>.<gbimg>.Value
+                bvedir = xCfile.<dir>.<bve>.Value
+                gbIdir = xCfile.<dir>.<gbimg>.Value
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+        End If
+        currDir = ""
     End Sub
 End Class
